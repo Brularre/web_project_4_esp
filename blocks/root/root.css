@@ -1,0 +1,15 @@
+.root {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #000000;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    color: white;
+    margin: auto;
+    padding: 0 200px;
+}
+
+@media screen and (min-width: 1225px) {
+    .root {
+        width: 1280px;
+    }
+}
