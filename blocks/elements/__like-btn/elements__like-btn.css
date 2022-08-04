@@ -1,0 +1,8 @@
+.elements__like-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: url(../../../images/elements_like-btn.svg) white no-repeat;
+    transition: background-image 0.5s;
+    background-size: contain;
+}

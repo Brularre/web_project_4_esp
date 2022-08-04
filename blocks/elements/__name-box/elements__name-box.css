@@ -1,0 +1,5 @@
+.elements__name-box {
+    padding: 25px 25px 30px 25px;
+    display: flex;
+    justify-content: space-between;
+}

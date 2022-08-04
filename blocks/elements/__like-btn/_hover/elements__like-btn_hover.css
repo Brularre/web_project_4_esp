@@ -1,0 +1,6 @@
+.elements__like-btn:hover {
+    background: url(../../../../images/elements_like-btn_hover.svg) white
+        no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
