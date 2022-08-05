@@ -1,6 +1,15 @@
 .profile__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    align-items: flex-end;
+}
+
+@media screen and (min-width: 1280px) {
+    .profile__info {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        align-items: center;
+    }
 }

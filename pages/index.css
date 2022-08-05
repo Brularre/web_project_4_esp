@@ -30,10 +30,13 @@
 /* POPUP */
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__button/popup__btn.css);
-@import url(../blocks/popup/__button/_hover/popup__btn_hover.css);
+@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+@import url(../blocks/popup/__submit-btn/_hover/popup__submit-btn_hover.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__close-btn/_hover/popup__close-btn_hover.css);
 
 /* ELEMENTS */
 
