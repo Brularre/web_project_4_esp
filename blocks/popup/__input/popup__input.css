@@ -1,9 +1,9 @@
-.modal-edit-form__input {
+.popup__input {
     border: none;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.modal-edit-form__input:focus {
+.popup__input:focus {
     outline: none;
 }

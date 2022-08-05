@@ -1,9 +1,19 @@
 .profile__add-btn {
-    width: 150px;
+    width: 282px;
     height: 50px;
     border: none;
-    margin-left: auto;
-    background: url(../../../images/profile__add-btn.svg) no-repeat;
-    transition: background-image 0.5s;
+    margin: auto;
+    background: url(../../../images/profile__add-btn_mobile.svg) no-repeat;
+    transition: opacity 0.5s;
     background-size: contain;
+}
+
+@media screen and (min-width: 768px) {
+    .profile__add-btn {
+        width: 150px;
+        height: 50px;
+        margin: 0;
+        margin-left: auto;
+        background: url(../../../images/profile__add-btn.svg) no-repeat;
+    }
 }

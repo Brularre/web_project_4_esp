@@ -1,5 +1,4 @@
 .profile__add-btn:hover {
-    background: url(../../../../images/profile__add-btn_hover.svg) no-repeat;
-    background-size: contain;
+    opacity: 0.6;
     cursor: pointer;
 }

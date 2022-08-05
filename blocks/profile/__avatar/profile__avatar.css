@@ -2,5 +2,10 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    flex: 0 1 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .profile__avatar {
+        padding: 0;
+    }
 }

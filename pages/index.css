@@ -27,13 +27,13 @@
 @import url(../blocks/profile/__add-btn/profile__add-btn.css);
 @import url(../blocks/profile/__add-btn/_hover/profile__add-btn_hover.css);
 
-/* MODAL EDIT FORM */
+/* POPUP */
 
-@import url(../blocks/modal-edit-form/modal-edit-form.css);
-@import url(../blocks/modal-edit-form/__input/modal-edit-form__input.css);
-@import url(../blocks/modal-edit-form/__title/modal-edit-form__title.css);
-@import url(../blocks/modal-edit-form/__button/modal-edit-form__btn.css);
-@import url(../blocks/modal-edit-form/__button/_hover/modal-edit-form__btn_hover.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__button/popup__btn.css);
+@import url(../blocks/popup/__button/_hover/popup__btn_hover.css);
 
 /* ELEMENTS */
 

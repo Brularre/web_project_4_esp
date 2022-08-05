@@ -1,9 +1,9 @@
-.modal-edit-form {
-    width: 430px;
-    height: 330px;
+.popup {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 90%;
+    height: 322px;
     padding: 36px;
     border-radius: 10px;
     background-color: white;
@@ -16,4 +16,12 @@
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px) {
+    .popup {
+        width: 33.33%;
+        height: 330px;
+    }
 }
