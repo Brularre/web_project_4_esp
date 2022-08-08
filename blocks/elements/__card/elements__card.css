@@ -1,4 +1,10 @@
 .elements__card {
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 25px;
     min-width: 282px;
+}
+
+@media screen and (min-width: 768px) {
+    .elements__card {
+        width: 282px;
+    }
 }
