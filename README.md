@@ -16,6 +16,7 @@ En este proyecto se incorporó el uso de lógica Javascript para añadir una fun
 
 ## Versiones
 
+1.7 - Fix: Segunda entrega con correcciones para revisor.
 1.6 - Fix: Entrega con correcciones para revisor.
 1.5 - Feat: Primera entrega según especificaciones.
 1.4 - Feat: Agrega scripts y funcionalidad en los botones.
