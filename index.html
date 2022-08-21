@@ -31,26 +31,6 @@
                 <button type="button" class="profile__add-btn"></button>
             </section>
 
-            <form class="popup">
-                <button type="button" class="popup__close-btn"></button>
-                <h2 class="popup__title">Editar perfil</h2>
-                <input
-                    type="text"
-                    name="profile-name"
-                    id="profile-name"
-                    class="popup__input"
-                    placeholder="Usuario"
-                />
-                <input
-                    type="text"
-                    name="profile-job"
-                    id="profile-job"
-                    class="popup__input"
-                    placeholder="Ocupación"
-                />
-                <button type="submit" class="popup__submit-btn">Guardar</button>
-            </form>
-
             <main class="elements">
                 <!-- CONTENIDO INYECTADO DESDE JAVASCRIPT -->
             </main>
@@ -59,7 +39,7 @@
         </div>
 
         <!-- TEMPLATES -->
-        <template id="template__cards">
+        <template id="template_cards">
             <div class="elements__card">
                 <img
                     src="#"
@@ -71,6 +51,28 @@
                     <button type="submit" class="elements__like-btn"></button>
                 </div>
             </div>
+        </template>
+
+        <template id="template_popup">
+            <form class="popup">
+                <button type="button" class="popup__close-btn"></button>
+                <h2 class="popup__title">Editar perfil</h2>
+                <input
+                    type="text"
+                    name="input-one"
+                    id="input-one"
+                    class="popup__input"
+                    placeholder="Input one text"
+                />
+                <input
+                    type="text"
+                    name="input-two"
+                    id="input-two"
+                    class="popup__input"
+                    placeholder=""
+                />
+                <button type="submit" class="popup__submit-btn">Guardar</button>
+            </form>
         </template>
 
         <script src="./scripts/scripts.js"></script>

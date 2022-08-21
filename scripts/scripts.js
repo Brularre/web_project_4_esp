@@ -1,38 +1,81 @@
-const pu = document.querySelector(".popup");
-const puCloseBtn = document.querySelector(".popup__close-btn");
+const addBtn = document.querySelector(".profile__add-btn");
 const editBtn = document.querySelector(".profile__edit-btn");
-const nameInput = document.querySelector("#profile-name");
-const jobInput = document.querySelector("#profile-job");
+const profileName = document.querySelector(".profile__name");
+const profileJob = document.querySelector(".profile__job");
 
-/* EDIT FORM -> EDIT BUTTON LOGIC */
+/* POPUP TEMPLATES AND FUNCTIONS */
 
-editBtn.addEventListener("click", function () {
-    let username = document.querySelector(".profile__name").textContent;
-    let userJob = document.querySelector(".profile__job").textContent;
-    pu.classList.add("popup_opened");
-    nameInput.value = username;
-    jobInput.value = userJob;
+const templatePopup = document.querySelector("#template_popup").content;
+const newPopup = templatePopup.cloneNode(true);
+const popup = newPopup.querySelector(".popup");
+const popupTitle = newPopup.querySelector(".popup__title");
+const firstInput = newPopup.querySelector("#input-one");
+const secondInput = newPopup.querySelector("#input-two");
+const popupClose = newPopup.querySelector(".popup__close-btn");
+
+const templateInputChanger = (where, title, name, id, placeholder) => {
+    if (where === 1) {
+        popupTitle.textContent = title;
+        firstInput.name = name;
+        firstInput.id = id;
+        firstInput.placeholder = placeholder;
+    } else if (where === 2) {
+        secondInput.name = name;
+        secondInput.id = id;
+        secondInput.placeholder = placeholder;
+    }
+};
+
+const closeForm = () => popup.remove();
+
+/* ADD FORM CREATOR */
+
+addBtn.addEventListener("click", () => {
+    templateInputChanger(
+        1,
+        "Nuevo lugar",
+        "place-name",
+        "place-name",
+        "Título"
+    );
+    templateInputChanger(
+        2,
+        "",
+        "place-link",
+        "place-link",
+        "Enlace a la imagen"
+    );
+    popupClose.addEventListener("click", closeForm);
+    document.body.prepend(popup);
 });
 
-/* EDIT FORM -> CLOSE BUTTON LOGIC */
+/* EDIT FORM CREATOR */
 
-function closeEdit() {
-    pu.classList.remove("popup_opened");
-}
+editBtn.addEventListener("click", () => {
+    templateInputChanger(
+        1,
+        "Editar perfil",
+        "profile-name",
+        "profile-name",
+        "Usuario"
+    );
+    templateInputChanger(2, "", "profile-job", "profile-job", "Ocupación");
+    firstInput.value = profileName.textContent;
+    secondInput.value = profileJob.textContent;
+    popupClose.addEventListener("click", closeForm);
+    popup.addEventListener("submit", handleProfileFormSubmit);
+    document.body.prepend(popup);
+});
 
-puCloseBtn.addEventListener("click", closeEdit);
-
-/* EDIT FORM -> SUBMIT BUTTON LOGIC */
+/* POPUP FORM -> SUBMIT BUTTON LOGIC */
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-    document.querySelector(".profile__name").textContent = nameInput.value;
-    document.querySelector(".profile__job").textContent = jobInput.value;
-    closeEdit();
+    profileName.textContent = firstInput.value;
+    profileJob.textContent = secondInput.value;
+    closeForm();
     return;
 }
-
-pu.addEventListener("submit", handleProfileFormSubmit);
 
 /* CARD TEMPLATE INJECTOR */
 
@@ -70,7 +113,7 @@ const cards = [
 ];
 
 const cardsContainer = document.querySelector(".elements");
-const templateCards = document.querySelector("#template__cards").content;
+const templateCards = document.querySelector("#template_cards").content;
 
 for (let key in cards) {
     const elementsCard = templateCards
