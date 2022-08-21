@@ -24,9 +24,9 @@
                     class="profile__avatar"
                 />
                 <div class="profile__info">
-                    <h1 class="profile__name">Jacques Cousteau</h1>
+                    <h1 class="profile__name">T-800</h1>
                     <button type="button" class="profile__edit-btn"></button>
-                    <p class="profile__job">Explorador</p>
+                    <p class="profile__job">Agente de cobranzas</p>
                 </div>
                 <button type="button" class="profile__add-btn"></button>
             </section>
@@ -52,95 +52,27 @@
             </form>
 
             <main class="elements">
-                <div class="elements__card">
-                    <img
-                        src="./images/elements-img-Yosemite.jpg"
-                        alt="Fotografía del Valle de Yosemite"
-                        class="elements__image"
-                    />
-                    <div class="elements__name-box">
-                        <h2 class="elements__name">Valle de Yosemite</h2>
-                        <button
-                            type="submit"
-                            class="elements__like-btn"
-                        ></button>
-                    </div>
-                </div>
-
-                <div class="elements__card">
-                    <img
-                        src="./images/elements-img-Louise.jpg"
-                        alt="Fotografía del Lago Louise"
-                        class="elements__image"
-                    />
-                    <div class="elements__name-box">
-                        <h2 class="elements__name">Lago Louise</h2>
-                        <button
-                            type="submit"
-                            class="elements__like-btn"
-                        ></button>
-                    </div>
-                </div>
-                <div class="elements__card">
-                    <img
-                        src="./images/elements-img-Calvas.jpg"
-                        alt="Fotografía de las Montañas Calvas"
-                        class="elements__image"
-                    />
-                    <div class="elements__name-box">
-                        <h2 class="elements__name">Montañas Calvas</h2>
-                        <button
-                            type="submit"
-                            class="elements__like-btn"
-                        ></button>
-                    </div>
-                </div>
-                <div class="elements__card">
-                    <img
-                        src="./images/elements-img-Latemar.jpg"
-                        alt="Fotografía de Latemar "
-                        class="elements__image"
-                    />
-                    <div class="elements__name-box">
-                        <h2 class="elements__name">Latemar</h2>
-                        <button
-                            type="submit"
-                            class="elements__like-btn"
-                        ></button>
-                    </div>
-                </div>
-                <div class="elements__card">
-                    <img
-                        src="./images/elements-img-Vanoise.jpg"
-                        alt="Fotografía del Parque Nacional Vanoise"
-                        class="elements__image"
-                    />
-                    <div class="elements__name-box">
-                        <h2 class="elements__name">Vanoise National Park</h2>
-                        <button
-                            type="submit"
-                            class="elements__like-btn"
-                        ></button>
-                    </div>
-                </div>
-                <div class="elements__card">
-                    <img
-                        src="./images/elements-img-diBraies.jpg"
-                        alt="Fotografía del Lago di Braies"
-                        class="elements__image"
-                    />
-                    <div class="elements__name-box">
-                        <h2 class="elements__name">Lago di Braies</h2>
-                        <button
-                            type="submit"
-                            class="elements__like-btn"
-                        ></button>
-                    </div>
-                </div>
+                <!-- CONTENIDO INYECTADO DESDE JAVASCRIPT -->
             </main>
 
             <footer class="footer">© 2022 Alrededor de los EEUU</footer>
         </div>
+
+        <!-- TEMPLATES -->
+        <template id="template__cards">
+            <div class="elements__card">
+                <img
+                    src="#"
+                    alt="Fotografía en Web 'Around the US'"
+                    class="elements__image"
+                />
+                <div class="elements__name-box">
+                    <h2 class="elements__name">Nombre de Lugar</h2>
+                    <button type="submit" class="elements__like-btn"></button>
+                </div>
+            </div>
+        </template>
+
         <script src="./scripts/scripts.js"></script>
     </body>
 </html>
