@@ -46,6 +46,7 @@ addBtn.addEventListener("click", () => {
         "Enlace a la imagen"
     );
     popupClose.addEventListener("click", closeForm);
+    popup.addEventListener("submit", handleAddFormSubmit);
     document.body.prepend(popup);
 });
 
@@ -81,14 +82,9 @@ function handleProfileFormSubmit(evt) {
 
 const cards = [
     {
-        name: "Yellowstone",
-        link: "./images/elements-img-Yellowstone.jpg",
-        alt: "Fotografía del Parque Nacional Yellowstone",
-    },
-    {
-        name: "Empire State",
-        link: "./images/elements-img-EmpireState.jpg",
-        alt: "Ftografía del edificio Empire State en NYC",
+        name: "Times Square",
+        link: "./images/elements-img-TimesSquare.jpg",
+        alt: "Fotografía de Times Square en NYC",
     },
     {
         name: "Monte Rushmore",
@@ -106,9 +102,14 @@ const cards = [
         alt: "Fotografía del Puente Golden Gate en San Francisco",
     },
     {
-        name: "Times Square",
-        link: "./images/elements-img-TimesSquare.jpg",
-        alt: "Fotografía de Times Square en NYC",
+        name: "Empire State",
+        link: "./images/elements-img-EmpireState.jpg",
+        alt: "Fotografía del edificio Empire State en NYC",
+    },
+    {
+        name: "Yellowstone",
+        link: "./images/elements-img-Yellowstone.jpg",
+        alt: "Fotografía del Parque Nacional Yellowstone",
     },
 ];
 
@@ -116,11 +117,32 @@ const cardsContainer = document.querySelector(".elements");
 const templateCards = document.querySelector("#template_cards").content;
 
 for (let key in cards) {
-    const elementsCard = templateCards
+    let newCardName = cards[key].name;
+    let newCardLink = cards[key].link;
+    addNewCard(newCardName, newCardLink);
+    document.querySelector(".elements__image").alt = cards[key].alt;
+}
+
+function addNewCard(placeName, placeLink) {
+    const newCard = templateCards
         .querySelector(".elements__card")
         .cloneNode(true);
-    elementsCard.querySelector(".elements__name").textContent = cards[key].name;
-    elementsCard.querySelector(".elements__image").src = cards[key].link;
-    elementsCard.querySelector(".elements__image").alt = cards[key].alt;
-    cardsContainer.append(elementsCard);
+    newCard.querySelector(".elements__name").textContent = placeName;
+    newCard.querySelector(".elements__image").src = placeLink;
+    newCard.querySelector(
+        ".elements__image"
+    ).alt = `Fotografía subida por el usuario de ${placeName}`;
+    newCard
+        .querySelector(".elements__like-btn")
+        .addEventListener("click", (evt) => {
+            evt.target.classList.toggle("elements__like-btn_active");
+        });
+    cardsContainer.prepend(newCard);
+}
+
+function handleAddFormSubmit(evt) {
+    evt.preventDefault();
+    addNewCard(firstInput.value, secondInput.value);
+    closeForm();
+    return;
 }
