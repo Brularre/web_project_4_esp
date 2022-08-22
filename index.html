@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./pages/index.css" />
+
         <title>Alrededor de los EEUU</title>
     </head>
     <body class="root">
@@ -70,10 +71,18 @@
                     name="input-two"
                     id="input-two"
                     class="popup__input"
-                    placeholder=""
+                    placeholder=" "
                 />
                 <button type="submit" class="popup__submit-btn">Guardar</button>
             </form>
+        </template>
+
+        <template id="template_modal-box">
+            <div class="modal-box">
+                <button type="button" class="modal-box__close-btn"></button>
+                <img src="#" alt="Imagen del popup" class="modal-box__image" />
+                <h3 class="modal-box__title">Título del popup</h3>
+            </div>
         </template>
 
         <script src="./scripts/scripts.js"></script>

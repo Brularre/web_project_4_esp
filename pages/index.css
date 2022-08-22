@@ -10,6 +10,10 @@
 
 @import url(../blocks/root/root.css);
 
+/* ANIMACIONES */
+
+@import url(../animations/fadein.css);
+
 /* HEADER */
 
 @import url(../blocks/header/header.css);
@@ -50,7 +54,14 @@
 @import url(../blocks/elements/__name-box/elements__name-box.css);
 @import url(../blocks/elements/__del-btn/elements__del-btn.css);
 @import url(../blocks/elements/__del-btn/_hover/elements__del-btn_hover.css);
-@import url(../blocks/elements/__image/_modal/elements__image_modal.css);
+
+/* MODAL BOX */
+
+@import url(../blocks/modal-box/modal-box.css);
+@import url(../blocks/modal-box/__image/modal-box__image.css);
+@import url(../blocks/modal-box/__title/modal-box__title.css);
+@import url(../blocks/modal-box/__close-btn/modal-box__close-btn.css);
+@import url(../blocks/modal-box/__close-btn/_hover/modal-box__close-btn_hover.css);
 
 /* FOOTER */
 

@@ -1,11 +1,6 @@
-.elements__image_modal {
+.modal-box {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    max-width: 75vw;
-    max-height: 75vh;
-    -webkit-box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
     position: fixed;
     left: 50%;
     top: 50%;
@@ -14,4 +9,7 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     box-sizing: border-box;
+    z-index: 2;
+    animation-duration: 0.6s;
+    animation-name: fadein;
 }

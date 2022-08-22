@@ -1,51 +1,50 @@
+/* GLOBAL SELECTORS */
+
 const addBtn = document.querySelector(".profile__add-btn");
 const editBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
-/* POPUP TEMPLATES AND FUNCTIONS */
+/* FUNCTIONS */
 
-const templatePopup = document.querySelector("#template_popup").content;
-const newPopup = templatePopup.cloneNode(true);
-const popup = newPopup.querySelector(".popup");
-const popupTitle = newPopup.querySelector(".popup__title");
-const firstInput = newPopup.querySelector("#input-one");
-const secondInput = newPopup.querySelector("#input-two");
-const popupClose = newPopup.querySelector(".popup__close-btn");
-
-const templateInputChanger = (where, title, name, id, placeholder) => {
-    if (where === 1) {
-        popupTitle.textContent = title;
-        firstInput.name = name;
-        firstInput.id = id;
-        firstInput.placeholder = placeholder;
-    } else if (where === 2) {
-        secondInput.name = name;
-        secondInput.id = id;
-        secondInput.placeholder = placeholder;
-    }
+const closeBtn = (evt) => {
+    evt.target.parentNode.style.transition = "opacity 600ms ease";
+    evt.target.parentNode.style.opacity = 0;
+    setTimeout(function () {
+        evt.target.parentNode.remove();
+    }, 600);
 };
 
-const closeForm = () => popup.remove();
+/* POPUP TEMPLATES AND FUNCTIONS */
+
+function createPopup() {
+    const templatePopup = document.querySelector("#template_popup").content;
+    const newPopup = templatePopup.cloneNode(true);
+    return newPopup;
+}
 
 /* ADD FORM CREATOR */
 
 addBtn.addEventListener("click", () => {
+    const popup = createPopup();
+    const popupClose = popup.querySelector(".popup__close-btn");
     templateInputChanger(
         1,
         "Nuevo lugar",
         "place-name",
         "place-name",
-        "Título"
+        "Título",
+        popup
     );
     templateInputChanger(
         2,
         "",
         "place-link",
         "place-link",
-        "Enlace a la imagen"
+        "Enlace a la imagen",
+        popup
     );
-    popupClose.addEventListener("click", closeForm);
+    popupClose.addEventListener("click", (evt) => closeBtn(evt));
     popup.addEventListener("submit", handleAddFormSubmit);
     document.body.prepend(popup);
 });
@@ -53,28 +52,67 @@ addBtn.addEventListener("click", () => {
 /* EDIT FORM CREATOR */
 
 editBtn.addEventListener("click", () => {
+    const popup = createPopup();
+    const popupClose = popup.querySelector(".popup__close-btn");
+    let firstInput = popup.querySelector("#input-one");
+    let secondInput = popup.querySelector("#input-two");
     templateInputChanger(
         1,
         "Editar perfil",
         "profile-name",
         "profile-name",
-        "Usuario"
+        "Usuario",
+        popup
     );
-    templateInputChanger(2, "", "profile-job", "profile-job", "Ocupación");
+    templateInputChanger(
+        2,
+        "",
+        "profile-job",
+        "profile-job",
+        "Ocupación",
+        popup
+    );
     firstInput.value = profileName.textContent;
     secondInput.value = profileJob.textContent;
-    popupClose.addEventListener("click", closeForm);
-    popup.addEventListener("submit", handleProfileFormSubmit);
+    popupClose.addEventListener("click", (evt) => closeBtn(evt));
+    popup.addEventListener("submit", (evt) => {
+        evt.preventDefault();
+        profileName.textContent = firstInput.value;
+        profileJob.textContent = secondInput.value;
+    });
     document.body.prepend(popup);
 });
 
-/* POPUP FORM -> SUBMIT BUTTON LOGIC */
+/* TEMPLATE INPUT CHANGER */
+
+const templateInputChanger = (input, title, name, id, placeholder, popup) => {
+    let popupTitle = popup.querySelector(".popup__title");
+    let firstInput = popup.querySelector("#input-one");
+    let secondInput = popup.querySelector("#input-two");
+    if (input === 1) {
+        popupTitle.textContent = title;
+        firstInput.name = name;
+        firstInput.id = id;
+        firstInput.placeholder = placeholder;
+    } else if (input === 2) {
+        secondInput.name = name;
+        secondInput.id = id;
+        secondInput.placeholder = placeholder;
+    }
+};
+
+/* SUBMIT FORM HANDLERS */
 
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = firstInput.value;
     profileJob.textContent = secondInput.value;
-    closeForm();
+    return;
+}
+
+function handleAddFormSubmit(evt) {
+    evt.preventDefault();
+    addNewCard(firstInput.value, secondInput.value);
     return;
 }
 
@@ -113,9 +151,6 @@ const cards = [
     },
 ];
 
-const cardsContainer = document.querySelector(".elements");
-const templateCards = document.querySelector("#template_cards").content;
-
 for (let key in cards) {
     let newCardName = cards[key].name;
     let newCardLink = cards[key].link;
@@ -124,6 +159,8 @@ for (let key in cards) {
 }
 
 function addNewCard(placeName, placeLink) {
+    const templateCards = document.querySelector("#template_cards").content;
+    const cardsContainer = document.querySelector(".elements");
     const newCard = templateCards
         .querySelector(".elements__card")
         .cloneNode(true);
@@ -140,26 +177,24 @@ function addNewCard(placeName, placeLink) {
     cardDelete.addEventListener("click", (evt) =>
         evt.target.closest("div").remove()
     );
-    cardImage.addEventListener("click", (evt) => modalImage(evt.target));
+    cardImage.addEventListener("click", (evt) => {
+        openModalImage(evt.target);
+        evt.target.parentNode.opacity = 0;
+    });
     cardsContainer.prepend(newCard);
 }
 
-function handleAddFormSubmit(evt) {
-    evt.preventDefault();
-    addNewCard(firstInput.value, secondInput.value);
-    closeForm();
-    return;
-}
+/* MODAL BOX LOGIC */
 
-function modalImage(img) {
-    const modalContainer = document.createElement("div");
-    const modalImg = document.createElement("img");
-    const modalTitle = document.createElement("p");
-    modalContainer.classList.add(".elements__img_modal");
+function openModalImage(img) {
+    const templateModal = document.querySelector("#template_modal-box").content;
+    const modalBox = templateModal.cloneNode(true);
+    const modalImg = modalBox.querySelector(".modal-box__image");
+    const modalTitle = modalBox.querySelector(".modal-box__title");
+    const modalCloseBtn = modalBox.querySelector(".modal-box__close-btn");
     modalImg.src = img.src;
     modalImg.alt = img.alt;
-    modalTitle.textContent = "hola";
-    modalContainer.prepend(modalImg);
-    modalContainer.append(modalTitle);
-    document.body.append(modalContainer);
+    modalTitle.textContent = img.parentNode.textContent;
+    modalCloseBtn.addEventListener("click", (evt) => closeBtn(evt));
+    document.body.prepend(modalBox);
 }

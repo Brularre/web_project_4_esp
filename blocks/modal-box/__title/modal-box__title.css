@@ -1,0 +1,9 @@
+.modal-box__title {
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: white;
+    -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.9));
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.9));
+}
