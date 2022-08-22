@@ -127,16 +127,20 @@ function addNewCard(placeName, placeLink) {
     const newCard = templateCards
         .querySelector(".elements__card")
         .cloneNode(true);
-    newCard.querySelector(".elements__name").textContent = placeName;
-    newCard.querySelector(".elements__image").src = placeLink;
-    newCard.querySelector(
-        ".elements__image"
-    ).alt = `Fotografía subida por el usuario de ${placeName}`;
-    newCard
-        .querySelector(".elements__like-btn")
-        .addEventListener("click", (evt) => {
-            evt.target.classList.toggle("elements__like-btn_active");
-        });
+    const cardName = newCard.querySelector(".elements__name");
+    const cardImage = newCard.querySelector(".elements__image");
+    const cardLike = newCard.querySelector(".elements__like-btn");
+    const cardDelete = newCard.querySelector(".elements__del-btn");
+    cardName.textContent = placeName;
+    cardImage.src = placeLink;
+    cardImage.alt = `Fotografía subida por el usuario de ${placeName}`;
+    cardLike.addEventListener("click", (evt) =>
+        evt.target.classList.toggle("elements__like-btn_active")
+    );
+    cardDelete.addEventListener("click", (evt) =>
+        evt.target.closest("div").remove()
+    );
+    cardImage.addEventListener("click", (evt) => modalImage(evt.target));
     cardsContainer.prepend(newCard);
 }
 
@@ -145,4 +149,17 @@ function handleAddFormSubmit(evt) {
     addNewCard(firstInput.value, secondInput.value);
     closeForm();
     return;
+}
+
+function modalImage(img) {
+    const modalContainer = document.createElement("div");
+    const modalImg = document.createElement("img");
+    const modalTitle = document.createElement("p");
+    modalContainer.classList.add(".elements__img_modal");
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    modalTitle.textContent = "hola";
+    modalContainer.prepend(modalImg);
+    modalContainer.append(modalTitle);
+    document.body.append(modalContainer);
 }

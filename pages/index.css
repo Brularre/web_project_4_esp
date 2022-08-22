@@ -48,6 +48,9 @@
 @import url(../blocks/elements/__like-btn/_active/elements__like-btn_active.css);
 @import url(../blocks/elements/__name/elements__name.css);
 @import url(../blocks/elements/__name-box/elements__name-box.css);
+@import url(../blocks/elements/__del-btn/elements__del-btn.css);
+@import url(../blocks/elements/__del-btn/_hover/elements__del-btn_hover.css);
+@import url(../blocks/elements/__image/_modal/elements__image_modal.css);
 
 /* FOOTER */
 
