@@ -8,11 +8,19 @@ const profileJob = document.querySelector(".profile__job");
 /* FUNCTIONS */
 
 const closeBtn = (evt) => {
-    evt.target.parentNode.style.transition = "opacity 600ms ease";
-    evt.target.parentNode.style.opacity = 0;
-    setTimeout(function () {
-        evt.target.parentNode.remove();
-    }, 600);
+    if (evt.target.tagName == "FORM") {
+        evt.target.style.transition = "opacity 600ms ease";
+        evt.target.style.opacity = 0;
+        setTimeout(function () {
+            evt.target.remove();
+        }, 600);
+    } else {
+        evt.target.parentNode.style.transition = "opacity 600ms ease";
+        evt.target.parentNode.style.opacity = 0;
+        setTimeout(function () {
+            evt.target.parentNode.remove();
+        }, 600);
+    }
 };
 
 /* POPUP TEMPLATES AND FUNCTIONS */
@@ -23,11 +31,32 @@ function createPopup() {
     return newPopup;
 }
 
+/* TEMPLATE INPUT CHANGER */
+
+const templateInputChanger = (input, title, name, id, placeholder, popup) => {
+    let popupTitle = popup.querySelector(".popup__title");
+    let firstInput = popup.querySelector("#input-one");
+    let secondInput = popup.querySelector("#input-two");
+    if (input === 1) {
+        popupTitle.textContent = title;
+        firstInput.name = name;
+        firstInput.id = id;
+        firstInput.placeholder = placeholder;
+    } else if (input === 2) {
+        secondInput.name = name;
+        secondInput.id = id;
+        secondInput.placeholder = placeholder;
+    }
+};
+
 /* ADD FORM CREATOR */
 
 addBtn.addEventListener("click", () => {
-    const popup = createPopup();
+    const newPopup = createPopup();
+    const popup = newPopup.querySelector(".popup");
     const popupClose = popup.querySelector(".popup__close-btn");
+    const placeName = popup.querySelector("#input-one");
+    const placeLink = popup.querySelector("#input-two");
     templateInputChanger(
         1,
         "Nuevo lugar",
@@ -45,14 +74,20 @@ addBtn.addEventListener("click", () => {
         popup
     );
     popupClose.addEventListener("click", (evt) => closeBtn(evt));
-    popup.addEventListener("submit", handleAddFormSubmit);
+    popup.addEventListener("submit", (evt) => {
+        evt.preventDefault();
+        console.log(placeName.value);
+        addNewCard(placeName.value, placeLink.value);
+        closeBtn(evt);
+    });
     document.body.prepend(popup);
 });
 
 /* EDIT FORM CREATOR */
 
 editBtn.addEventListener("click", () => {
-    const popup = createPopup();
+    const newPopup = createPopup();
+    const popup = newPopup.querySelector(".popup");
     const popupClose = popup.querySelector(".popup__close-btn");
     let firstInput = popup.querySelector("#input-one");
     let secondInput = popup.querySelector("#input-two");
@@ -79,42 +114,10 @@ editBtn.addEventListener("click", () => {
         evt.preventDefault();
         profileName.textContent = firstInput.value;
         profileJob.textContent = secondInput.value;
+        closeBtn(evt);
     });
     document.body.prepend(popup);
 });
-
-/* TEMPLATE INPUT CHANGER */
-
-const templateInputChanger = (input, title, name, id, placeholder, popup) => {
-    let popupTitle = popup.querySelector(".popup__title");
-    let firstInput = popup.querySelector("#input-one");
-    let secondInput = popup.querySelector("#input-two");
-    if (input === 1) {
-        popupTitle.textContent = title;
-        firstInput.name = name;
-        firstInput.id = id;
-        firstInput.placeholder = placeholder;
-    } else if (input === 2) {
-        secondInput.name = name;
-        secondInput.id = id;
-        secondInput.placeholder = placeholder;
-    }
-};
-
-/* SUBMIT FORM HANDLERS */
-
-function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    profileName.textContent = firstInput.value;
-    profileJob.textContent = secondInput.value;
-    return;
-}
-
-function handleAddFormSubmit(evt) {
-    evt.preventDefault();
-    addNewCard(firstInput.value, secondInput.value);
-    return;
-}
 
 /* CARD TEMPLATE INJECTOR */
 
