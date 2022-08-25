@@ -1,21 +1,21 @@
 .profile__name {
-    font-family: "Inter";
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 27px;
-    text-align: center;
-    color: #ffffff;
-    margin: 0;
-    padding-top: 30px;
-    display: inline-block;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+  padding-top: 30px;
+  display: inline-block;
 }
 
 @media screen and (min-width: 768px) {
-    .profile__name {
-        font-family: "Inter";
-        font-size: 42px;
-        line-height: 48px;
-        text-align: left;
-        padding-top: 0;
-    }
+  .profile__name {
+    font-family: "Inter";
+    font-size: 42px;
+    line-height: 48px;
+    text-align: left;
+    padding-top: 0;
+  }
 }

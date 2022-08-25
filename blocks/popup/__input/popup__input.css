@@ -1,13 +1,13 @@
 .popup__input {
-    border: none;
-    width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .popup__input:focus {
-    outline: none;
+  outline: none;
 }

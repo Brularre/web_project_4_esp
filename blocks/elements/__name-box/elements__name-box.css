@@ -1,10 +1,10 @@
 .elements__name-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    border-radius: 0 0 10px 10px;
-    padding: 25px 20px 30px 20px;
-    margin: 0;
-    gap: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  padding: 25px 20px 30px 20px;
+  margin: 0;
+  gap: 5px;
 }

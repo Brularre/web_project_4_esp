@@ -1,14 +1,14 @@
 .profile__info {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
-    align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
-    .profile__info {
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
-    }
+  .profile__info {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
 }

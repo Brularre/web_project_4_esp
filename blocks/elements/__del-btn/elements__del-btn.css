@@ -1,14 +1,14 @@
 .elements__del-btn {
-    width: 19px;
-    height: 19px;
-    border: none;
-    background: url(../../../images/elements_del-btn.svg) no-repeat;
-    -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7));
-    filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
-    transition: opacity 0.5s;
-    background-size: contain;
-    position: relative;
-    top: 40px;
-    left: 88%;
-    z-index: 1;
+  width: 19px;
+  height: 19px;
+  border: none;
+  background: url(../../../images/elements_del-btn.svg) no-repeat;
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  transition: opacity 0.5s;
+  background-size: contain;
+  position: relative;
+  top: 40px;
+  left: 88%;
+  z-index: 1;
 }

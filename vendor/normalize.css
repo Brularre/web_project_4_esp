@@ -3,9 +3,9 @@
 /* Documento
    ========================================================================== */
 
-/** 
- * 1. Corrige la altura de línea en todos los navegadores. 
- * 2. Previene los ajustes del tamaño de la fuente tras los cambios de orientación en iOS. 
+/**
+ * 1. Corrige la altura de línea en todos los navegadores.
+ * 2. Previene los ajustes del tamaño de la fuente tras los cambios de orientación en iOS.
  */
 
 html {
@@ -19,7 +19,7 @@ html {
      ========================================================================== */
 
 /**
-   * Elimina el margen en todos los navegadores. 
+   * Elimina el margen en todos los navegadores.
    */
 
 body {
@@ -27,7 +27,7 @@ body {
 }
 
 /**
-   * Renderiza consistentemente el elemento `main` en IE. 
+   * Renderiza consistentemente el elemento `main` en IE.
    */
 
 main {
@@ -35,8 +35,8 @@ main {
 }
 
 /**
-    * Corrige el tamaño de fuente y margen en los elementos `h1`dentro de los contextos `section` y 
-    * `article` en Chrome, Firefox y Safari. 
+    * Corrige el tamaño de fuente y margen en los elementos `h1`dentro de los contextos `section` y
+    * `article` en Chrome, Firefox y Safari.
    */
 
 h1 {
@@ -48,8 +48,8 @@ h1 {
      ========================================================================== */
 
 /**
-   * 1. Agrega el tamaño de caja correcto en Firefox. 
-   * 2. Muestra el excedente en Edge e IE. 
+   * 1. Agrega el tamaño de caja correcto en Firefox.
+   * 2. Muestra el excedente en Edge e IE.
    */
 
 hr {
@@ -62,8 +62,8 @@ hr {
 }
 
 /**
-   * 1. Corrige la herencia y el escalado del tamaño de la fuente en todos los navegadores. 
-   * 2. Corrige el tamaño de fuente impar `em` en todos los navegadores. 
+   * 1. Corrige la herencia y el escalado del tamaño de la fuente en todos los navegadores.
+   * 2. Corrige el tamaño de fuente impar `em` en todos los navegadores.
    */
 
 pre {
@@ -77,7 +77,7 @@ pre {
      ========================================================================== */
 
 /**
-   * Elimina el fondo gris de los enlaces activos en IE 10. 
+   * Elimina el fondo gris de los enlaces activos en IE 10.
    */
 
 a {
@@ -85,8 +85,8 @@ a {
 }
 
 /**
-   * 1. Elimina el borde del botón en Chrome 57- 
-   * 2. Agrega la decoración de texto correcta en Chrome, Edge, IE, Opera y Safari. 
+   * 1. Elimina el borde del botón en Chrome 57-
+   * 2. Agrega la decoración de texto correcta en Chrome, Edge, IE, Opera y Safari.
    */
 
 abbr[title] {
@@ -99,7 +99,7 @@ abbr[title] {
 }
 
 /**
-   * Agrega el grosor de fuente correcto en Chrome, Edge y Safari. 
+   * Agrega el grosor de fuente correcto en Chrome, Edge y Safari.
    */
 
 b,
@@ -108,8 +108,8 @@ strong {
 }
 
 /**
-   * 1. Corrige la herencia y el escalado del tamaño de la fuente en todos los navegadores. 
-   * 2. Corrige el tamaño de fuente impar `em` en todos los navegadores. 
+   * 1. Corrige la herencia y el escalado del tamaño de la fuente en todos los navegadores.
+   * 2. Corrige el tamaño de fuente impar `em` en todos los navegadores.
    */
 
 code,
@@ -121,17 +121,17 @@ samp {
   /* 2 */
 }
 
-/** 
- * Agrega el tamaño de fuente correcto en todos los navegadores. 
+/**
+ * Agrega el tamaño de fuente correcto en todos los navegadores.
  */
 
 small {
   font-size: 80%;
 }
 
-/** 
- * Evita que los elementos `sub` y `sup` afecten a la altura de línea en 
- * todos los navegadores. 
+/**
+ * Evita que los elementos `sub` y `sup` afecten a la altura de línea en
+ * todos los navegadores.
  */
 
 sub,
@@ -153,8 +153,8 @@ sup {
 /* Contenido insertado
      ========================================================================== */
 
-/** 
- * Elimina el borde de las imágenes dentro de enlaces en IE 10. 
+/**
+ * Elimina el borde de las imágenes dentro de enlaces en IE 10.
  */
 
 img {
@@ -164,9 +164,9 @@ img {
 /* Formularios
      ========================================================================== */
 
-/** 
- * 1. Cambia los estilos de fuente en todos los navegadores. 
- * 2. Elimina el margen en Firefox y Safari. 
+/**
+ * 1. Cambia los estilos de fuente en todos los navegadores.
+ * 2. Elimina el margen en Firefox y Safari.
  */
 
 button,
@@ -184,9 +184,9 @@ textarea {
   /* 2 */
 }
 
-/** 
- * Muestra el excedente en IE. 
- * 1. Muestra el excedente en Edge 
+/**
+ * Muestra el excedente en IE.
+ * 1. Muestra el excedente en Edge
  */
 
 button,
@@ -195,9 +195,9 @@ input {
   overflow: visible;
 }
 
-/** 
- * Elimina la herencia de text-transform en Edge, Firefox e IE. 
- * 1. Elimina la herencia de text-transform en Firefox. 
+/**
+ * Elimina la herencia de text-transform en Edge, Firefox e IE.
+ * 1. Elimina la herencia de text-transform en Firefox.
  */
 
 button,
@@ -206,8 +206,8 @@ select {
   text-transform: none;
 }
 
-/** 
- * Corrige la incapacidad de aplicar estilos a tipos sobre los que se puede hacer clic en iOS y Safari. 
+/**
+ * Corrige la incapacidad de aplicar estilos a tipos sobre los que se puede hacer clic en iOS y Safari.
  */
 
 button,
@@ -217,8 +217,8 @@ button,
   -webkit-appearance: button;
 }
 
-/** 
- * Elimina el borde interior y el relleno en Firefox. 
+/**
+ * Elimina el borde interior y el relleno en Firefox.
  */
 
 button::-moz-focus-inner,
@@ -229,8 +229,8 @@ button::-moz-focus-inner,
   padding: 0;
 }
 
-/** 
- * Restablece los estilos del foco que fueron desconfigurados por la regla anterior. 
+/**
+ * Restablece los estilos del foco que fueron desconfigurados por la regla anterior.
  */
 
 button:-moz-focusring,
@@ -240,19 +240,19 @@ button:-moz-focusring,
   outline: 1px dotted ButtonText;
 }
 
-/** 
- * Corrige el relleno en Firefox. 
+/**
+ * Corrige el relleno en Firefox.
  */
 
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
 
-/** 
- * 1. Corrige el ajuste de texto en Edge e IE. 
- * 2. Corrige la herencia de color de los elementos `fieldset` en IE. 
- * 3. Elimina el relleno para que los desarrolladores no se vean sorprendidos cuando pongan a cero 
- * los elementos `fieldset` en todos los navegadores. 
+/**
+ * 1. Corrige el ajuste de texto en Edge e IE.
+ * 2. Corrige la herencia de color de los elementos `fieldset` en IE.
+ * 3. Elimina el relleno para que los desarrolladores no se vean sorprendidos cuando pongan a cero
+ * los elementos `fieldset` en todos los navegadores.
  */
 
 legend {
@@ -270,25 +270,25 @@ legend {
   /* 1 */
 }
 
-/** 
- * Agrega el alineado vertical correcto en Chrome, Firefox y Opera. 
+/**
+ * Agrega el alineado vertical correcto en Chrome, Firefox y Opera.
  */
 
 progress {
   vertical-align: baseline;
 }
 
-/** 
- * Elimina la barra de desplazamiento vertical predeterminada en IE 10+. 
+/**
+ * Elimina la barra de desplazamiento vertical predeterminada en IE 10+.
  */
 
 textarea {
   overflow: auto;
 }
 
-/** 
- * 1. Agrega el tamaño de caja correcto en IE 10. 
- * 2. Elimina el relleno en IE 10. 
+/**
+ * 1. Agrega el tamaño de caja correcto en IE 10.
+ * 2. Elimina el relleno en IE 10.
  */
 
 [type="checkbox"],
@@ -299,8 +299,8 @@ textarea {
   /* 2 */
 }
 
-/** 
- * Corrige el estilo del cursor de los botones para incrementar y reducir en Chrome. 
+/**
+ * Corrige el estilo del cursor de los botones para incrementar y reducir en Chrome.
  */
 
 [type="number"]::-webkit-inner-spin-button,
@@ -308,9 +308,9 @@ textarea {
   height: auto;
 }
 
-/** 
- * 1. Corrige la apariencia extraña en Chrome y Safari. 
- * 2. Corrige el estilo de contorno en Safari. 
+/**
+ * 1. Corrige la apariencia extraña en Chrome y Safari.
+ * 2. Corrige el estilo de contorno en Safari.
  */
 
 [type="search"] {
@@ -320,17 +320,17 @@ textarea {
   /* 2 */
 }
 
-/** 
- * Elimina el relleno interior en Chrome y Safari, en macOS. 
+/**
+ * Elimina el relleno interior en Chrome y Safari, en macOS.
  */
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/** 
- * 1. Corrige la incapacidad de aplicar estilos a tipos sobre los que se puede hacer clic en iOS y Safari. 
- * 2. Cambia las propiedades de fuente para `inherit` en Safari. 
+/**
+ * 1. Corrige la incapacidad de aplicar estilos a tipos sobre los que se puede hacer clic en iOS y Safari.
+ * 2. Cambia las propiedades de fuente para `inherit` en Safari.
  */
 
 ::-webkit-file-upload-button {
@@ -343,16 +343,16 @@ textarea {
 /* Interactivo
      ========================================================================== */
 
-/* 
- * Agrega la visualización correcta en Edge, IE 10+ y Firefox. 
+/*
+ * Agrega la visualización correcta en Edge, IE 10+ y Firefox.
  */
 
 details {
   display: block;
 }
 
-/* 
- * Agrega la visualización correcta en todos los navegadores. 
+/*
+ * Agrega la visualización correcta en todos los navegadores.
  */
 
 summary {
@@ -362,16 +362,16 @@ summary {
 /* Misc
      ========================================================================== */
 
-/** 
- * Agrega la visualización correcta en IE 10+. 
+/**
+ * Agrega la visualización correcta en IE 10+.
  */
 
 template {
   display: none;
 }
 
-/** 
- * Agrega la visualización correcta en IE 10. 
+/**
+ * Agrega la visualización correcta en IE 10.
  */
 
 [hidden] {

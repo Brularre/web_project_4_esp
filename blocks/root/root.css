@@ -1,21 +1,21 @@
 .root {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background-color: #000000;
-    font-family: "Inter", Arial, sans-serif;
-    color: white;
-    margin: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #000000;
+  font-family: "Inter", Arial, sans-serif;
+  color: white;
+  margin: auto;
 }
 
 @media screen and (min-width: 768px) {
-    .root {
-        width: min(100%, 1280px);
-        padding: 0 5%;
-    }
+  .root {
+    width: min(100%, 1280px);
+    padding: 0 5%;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .root {
-        padding: 0 200px;
-    }
+  .root {
+    padding: 0 200px;
+  }
 }

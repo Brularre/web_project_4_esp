@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./pages/index.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
 
-        <title>Alrededor de los EEUU</title>
-    </head>
-    <body class="root">
-        <div class="page">
-            <header class="header">
-                <img
-                    src="./images/main__logo.svg"
-                    alt="Logo de Around the US"
-                    class="header__logo"
-                />
-            </header>
+    <title>Alrededor de los EEUU</title>
+  </head>
+  <body class="root">
+    <div class="page">
+      <header class="header">
+        <img
+          src="./images/main__logo.svg"
+          alt="Logo de Around the US"
+          class="header__logo"
+        />
+      </header>
 
-            <section class="profile">
-                <img
-                    src="./images/profile_avatar.jpg"
-                    alt="Imagen de perfil del usuario"
-                    class="profile__avatar"
-                />
-                <div class="profile__info">
-                    <h1 class="profile__name">T-800</h1>
-                    <button type="button" class="profile__edit-btn"></button>
-                    <p class="profile__job">Agente de cobranzas</p>
-                </div>
-                <button type="button" class="profile__add-btn"></button>
-            </section>
-
-            <main class="elements">
-                <!-- CONTENIDO INYECTADO DESDE JAVASCRIPT -->
-            </main>
-
-            <footer class="footer">© 2022 Alrededor de los EEUU</footer>
+      <section class="profile">
+        <img
+          src="./images/profile_avatar.jpg"
+          alt="Imagen de perfil del usuario"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h1 class="profile__name">T-800</h1>
+          <button type="button" class="profile__edit-btn"></button>
+          <p class="profile__job">Agente de cobranzas</p>
         </div>
+        <button type="button" class="profile__add-btn"></button>
+      </section>
 
-        <!-- TEMPLATES -->
-        <template id="template_cards">
-            <div class="elements__card">
-                <button type="button" class="elements__del-btn"></button>
-                <img
-                    src="#"
-                    alt="Fotografía en Web 'Around the US'"
-                    class="elements__image"
-                />
-                <div class="elements__name-box">
-                    <h2 class="elements__name">Nombre de Lugar</h2>
-                    <button type="submit" class="elements__like-btn"></button>
-                </div>
-            </div>
-        </template>
+      <main class="elements">
+        <!-- CONTENIDO INYECTADO DESDE JAVASCRIPT -->
+      </main>
 
-        <template id="template_popup">
-            <form class="popup">
-                <button type="button" class="popup__close-btn"></button>
-                <h2 class="popup__title">Editar perfil</h2>
-                <input
-                    type="text"
-                    name="input-one"
-                    id="input-one"
-                    class="popup__input"
-                    placeholder="Input one text"
-                />
-                <input
-                    type="text"
-                    name="input-two"
-                    id="input-two"
-                    class="popup__input"
-                    placeholder=" "
-                />
-                <button type="submit" class="popup__submit-btn">Guardar</button>
-            </form>
-        </template>
+      <footer class="footer">© 2022 Alrededor de los EEUU</footer>
+    </div>
 
-        <template id="template_modal-box">
-            <div class="modal-box">
-                <button type="button" class="modal-box__close-btn"></button>
-                <img src="#" alt="Imagen del popup" class="modal-box__image" />
-                <h3 class="modal-box__title">Título del popup</h3>
-            </div>
-        </template>
+    <!-- TEMPLATES -->
+    <template id="template_cards">
+      <div class="elements__card">
+        <button type="button" class="elements__del-btn"></button>
+        <img
+          src="#"
+          alt="Fotografía en Web 'Around the US'"
+          class="elements__image"
+        />
+        <div class="elements__name-box">
+          <h2 class="elements__name">Nombre de Lugar</h2>
+          <button type="submit" class="elements__like-btn"></button>
+        </div>
+      </div>
+    </template>
 
-        <script src="./scripts/scripts.js"></script>
-    </body>
+    <template id="template_popup">
+      <form class="popup">
+        <button type="button" class="popup__close-btn"></button>
+        <h2 class="popup__title">Editar perfil</h2>
+        <input
+          type="text"
+          name="input-one"
+          id="input-one"
+          class="popup__input"
+          placeholder="Input one text"
+        />
+        <input
+          type="text"
+          name="input-two"
+          id="input-two"
+          class="popup__input"
+          placeholder=" "
+        />
+        <button type="submit" class="popup__submit-btn">Guardar</button>
+      </form>
+    </template>
+
+    <template id="template_modal-box">
+      <div class="modal-box">
+        <button type="button" class="modal-box__close-btn"></button>
+        <img src="#" alt="Imagen del popup" class="modal-box__image" />
+        <h3 class="modal-box__title">Título del popup</h3>
+      </div>
+    </template>
+
+    <script src="./scripts/index.js"></script>
+  </body>
 </html>
