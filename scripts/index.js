@@ -32,6 +32,7 @@ const closeBtn = (evt) => {
 function createPopup() {
   const templatePopup = document.querySelector("#template_popup").content;
   const newPopup = templatePopup.cloneNode(true);
+  newPopup.id = "clonedPopup";
   return newPopup;
 }
 
@@ -171,6 +172,7 @@ function addNewCard(placeName, placeLink) {
   const newCard = templateCards
     .querySelector(".elements__card")
     .cloneNode(true);
+  newCard.id = "clonedCard";
   const cardName = newCard.querySelector(".elements__name");
   const cardImage = newCard.querySelector(".elements__image");
   const cardLike = newCard.querySelector(".elements__like-btn");
@@ -197,6 +199,7 @@ function addNewCard(placeName, placeLink) {
 function openModalImage(img) {
   const templateModal = document.querySelector("#template_modal-box").content;
   const modalBox = templateModal.cloneNode(true);
+  mobalBox.id = "clonedModalBox";
   const modalImg = modalBox.querySelector(".modal-box__image");
   const modalTitle = modalBox.querySelector(".modal-box__title");
   const modalCloseBtn = modalBox.querySelector(".modal-box__close-btn");
