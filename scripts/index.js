@@ -7,27 +7,7 @@ const profileJob = document.querySelector(".profile__job");
 
 /* FUNCTIONS */
 
-const closeBtn = (evt) => {
-  const delayValueMs = 600;
-  const eventTarget = evt.target;
-  const noOpacity = 0;
-  const formElement = document.querySelector(".popup");
-  if (formElement) {
-    formElement.style.transition = "opacity 600ms ease";
-    formElement.style.opacity = noOpacity;
-    setTimeout(function () {
-      formElement.remove();
-    }, delayValueMs);
-  } else {
-    eventTarget.closest("div").style.transition = "opacity 600ms ease";
-    eventTarget.closest("div").style.opacity = noOpacity;
-    setTimeout(function () {
-      eventTarget.closest("div").remove();
-    }, delayValueMs);
-  }
-};
-
-/* POPUP TEMPLATES AND FUNCTIONS */
+/* POPUP CREATION AND CONFIG */
 
 function createPopup() {
   const templatePopup = document.querySelector("#template_popup").content;
@@ -36,23 +16,113 @@ function createPopup() {
   return newPopup;
 }
 
-/* TEMPLATE INPUT CHANGER */
-
-const setInputProperties = (setWhich, title, name, id, placeholder, popup) => {
-  const popupTitle = popup.querySelector(".popup__title");
+const setPopupVariables = (popup) => {
   const firstInput = popup.querySelector("#input-one");
+  const firstInputError = popup.querySelector(".popup__error-msg-one");
   const secondInput = popup.querySelector("#input-two");
+  const secondInputError = popup.querySelector(".popup__error-msg-two");
+  const popupTitle = popup.querySelector(".popup__title");
+  const popupVariables = [
+    firstInput,
+    secondInput,
+    firstInputError,
+    secondInputError,
+    popupTitle,
+  ];
+  return popupVariables;
+};
+
+function configInputs(
+  popup,
+  setWhich,
+  title,
+  name,
+  id,
+  placeholder,
+  type,
+  minlength,
+  maxlength,
+  errorLocation
+) {
+  const [
+    firstInput,
+    secondInput,
+    firstInputError,
+    secondInputError,
+    popupTitle,
+  ] = setPopupVariables(popup);
   if (setWhich === "setFirstInput") {
     popupTitle.textContent = title;
     firstInput.name = name;
     firstInput.id = id;
     firstInput.placeholder = placeholder;
+    firstInput.setAttribute("required", "");
+    firstInput.setAttribute("type", type);
+    firstInput.setAttribute("minlength", minlength);
+    firstInput.setAttribute("maxlength", maxlength);
+    firstInputError.classList.replace("popup__error-msg-one", errorLocation);
   } else if (setWhich === "setSecondInput") {
     secondInput.name = name;
     secondInput.id = id;
     secondInput.placeholder = placeholder;
+    secondInput.setAttribute("required", "");
+    secondInput.setAttribute("type", type);
+    secondInput.setAttribute("minlength", minlength);
+    secondInput.setAttribute("maxlength", maxlength);
+    secondInputError.classList.replace("popup__error-msg-two", errorLocation);
+  }
+}
+
+const closeElement = (evt) => {
+  const delayValueMs = 600;
+  const noOpacity = 0;
+  const formElement = document.querySelector(".popup");
+  const modalBox = document.querySelector(".modal-box");
+  if (formElement) {
+    formElement.style.transition = "opacity 600ms ease";
+    formElement.style.opacity = noOpacity;
+    setTimeout(function () {
+      formElement.remove();
+    }, delayValueMs);
+  } else if (modalBox) {
+    modalBox.style.transition = "opacity 600ms ease";
+    modalBox.style.opacity = noOpacity;
+    setTimeout(function () {
+      modalBox.remove();
+    }, delayValueMs);
   }
 };
+
+const closeOnEsc = (evt) => {
+  if (evt.code === "Escape") {
+    closeElement(evt);
+    document.removeEventListener("keydown", closeOnEsc);
+  }
+};
+
+const closeOnOutsideClick = (evt) => {
+  closeElement(evt);
+  // const closedElement = evt.currentTarget;
+  // closeElement(closedElement);
+  // closedElement.removeEventListener("click", closeOnOutsideClick);
+};
+// document.removeEventListener("click", closeOnOutsideClick);
+//   if (modalBox && evt.target === modalBox) {
+//     console.log("a");
+//     modalBox.remove();
+//     window.removeEventListener("click", closeOnOutsideClick);
+//   }
+// };
+// document.addEventListener("click", (e) => {
+//   // Check if the filter list parent element exist
+//   const isClosest = e.target.closest(popupQuerySelector);
+
+//   // If `isClosest` equals falsy & popup has the class `show`
+//   // then hide the popup
+//   if (!isClosest && popupEl.classList.contains("show")) {
+//     popupEl.classList.remove("show");
+//   }
+// });
 
 /* ADD FORM CREATOR */
 
@@ -60,32 +130,48 @@ addBtn.addEventListener("click", () => {
   const newPopup = createPopup();
   const popup = newPopup.querySelector(".popup");
   const popupClose = popup.querySelector(".popup__close-btn");
-  const placeName = popup.querySelector("#input-one");
-  const placeLink = popup.querySelector("#input-two");
-  setInputProperties(
+  const [placeName, placeLink] = setPopupVariables(popup);
+  configInputs(
+    popup,
     "setFirstInput",
     "Nuevo lugar",
     "place-name",
     "place-name",
     "Título",
-    popup
+    "text",
+    "2",
+    "30",
+    "popup__error-place-name"
   );
-  setInputProperties(
+  configInputs(
+    popup,
     "setSecondInput",
     "",
     "place-link",
     "place-link",
     "Enlace a la imagen",
-    popup
+    "url",
+    "",
+    "",
+    "popup__error-place-link"
   );
-  popupClose.addEventListener("click", (evt) => closeBtn(evt));
+  popupClose.addEventListener("click", (evt) => closeElement(evt));
   popup.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    console.log(placeName.value);
     addNewCard(placeName.value, placeLink.value);
-    closeBtn(evt);
+    closeElement(evt);
+  });
+  enableValidation(popup, {
+    formSelector: ".popup",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit-btn",
+    inactiveButtonClass: ".popup__submit-btn_inactive",
+    inputErrorClass: ".popup__input_error",
+    errorClass: ".popup__error-msg",
   });
   document.body.prepend(popup);
+  document.addEventListener("keydown", closeOnEsc);
+  popup.addEventListener("click", closeOnOutsideClick);
 });
 
 /* EDIT FORM CREATOR */
@@ -94,34 +180,51 @@ editBtn.addEventListener("click", () => {
   const newPopup = createPopup();
   const popup = newPopup.querySelector(".popup");
   const popupClose = popup.querySelector(".popup__close-btn");
-  const firstInput = popup.querySelector("#input-one");
-  const secondInput = popup.querySelector("#input-two");
-  setInputProperties(
+  const [nameInput, jobInput] = setPopupVariables(popup);
+  configInputs(
+    popup,
     "setFirstInput",
     "Editar perfil",
     "profile-name",
     "profile-name",
     "Usuario",
-    popup
+    "text",
+    "2",
+    "40",
+    "popup__error-profile-name"
   );
-  setInputProperties(
+  configInputs(
+    popup,
     "setSecondInput",
     "",
     "profile-job",
     "profile-job",
     "Ocupación",
-    popup
+    "text",
+    "2",
+    "200",
+    "popup__error-profile-job"
   );
-  firstInput.value = profileName.textContent;
-  secondInput.value = profileJob.textContent;
-  popupClose.addEventListener("click", (evt) => closeBtn(evt));
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+  popupClose.addEventListener("click", (evt) => closeElement(evt));
   popup.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    profileName.textContent = firstInput.value;
-    profileJob.textContent = secondInput.value;
-    closeBtn(evt);
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    closeElement(evt);
+  });
+  enableValidation(popup, {
+    formSelector: ".popup",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit-btn",
+    inactiveButtonClass: ".popup__submit-btn_inactive",
+    inputErrorClass: ".popup__input_error",
+    errorClass: ".popup__error-msg",
   });
   document.body.prepend(popup);
+  document.addEventListener("keydown", closeOnEsc);
+  popup.addEventListener("focusout", closeOnOutsideClick);
 });
 
 /* CARD TEMPLATE INJECTOR */
@@ -199,13 +302,15 @@ function addNewCard(placeName, placeLink) {
 function openModalImage(img) {
   const templateModal = document.querySelector("#template_modal-box").content;
   const modalBox = templateModal.cloneNode(true);
-  mobalBox.id = "clonedModalBox";
+  modalBox.id = "clonedModalBox";
   const modalImg = modalBox.querySelector(".modal-box__image");
   const modalTitle = modalBox.querySelector(".modal-box__title");
   const modalCloseBtn = modalBox.querySelector(".modal-box__close-btn");
   modalImg.src = img.src;
   modalImg.alt = img.alt;
   modalTitle.textContent = img.closest("div").textContent;
-  modalCloseBtn.addEventListener("click", (evt) => closeBtn(evt));
+  modalCloseBtn.addEventListener("click", (evt) => closeElement(evt));
   document.body.prepend(modalBox);
+  document.addEventListener("keydown", closeOnEsc);
+  modalBox.addEventListener("focusout", (evt) => closeOnOutsideClick(evt));
 }

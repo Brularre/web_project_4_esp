@@ -56,25 +56,33 @@
     </template>
 
     <template id="template_popup">
-      <form class="popup">
-        <button type="button" class="popup__close-btn"></button>
-        <h2 class="popup__title">Editar perfil</h2>
-        <input
-          type="text"
-          name="input-one"
-          id="input-one"
-          class="popup__input"
-          placeholder="Input one text"
-        />
-        <input
-          type="text"
-          name="input-two"
-          id="input-two"
-          class="popup__input"
-          placeholder=" "
-        />
-        <button type="submit" class="popup__submit-btn">Guardar</button>
-      </form>
+      <div class="popup__container">
+        <form class="popup" name="popup" novalidate>
+          <button type="button" class="popup__close-btn"></button>
+          <h2 class="popup__title">Editar perfil</h2>
+          <div class="popup__input-container">
+            <input
+              type="text"
+              name="input-one"
+              id="input-one"
+              class="popup__input"
+              placeholder="Input one text"
+            />
+            <span class="popup__error-msg-one"></span>
+          </div>
+          <div class="popup__input-container">
+            <input
+              type="text"
+              name="input-two"
+              id="input-two"
+              class="popup__input"
+              placeholder=" "
+            />
+            <span class="popup__error-msg-two"></span>
+          </div>
+          <button type="submit" class="popup__submit-btn">Guardar</button>
+        </form>
+      </div>
     </template>
 
     <template id="template_modal-box">
@@ -86,5 +94,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
