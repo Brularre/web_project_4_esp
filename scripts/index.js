@@ -4,9 +4,97 @@ const addBtn = document.querySelector(".profile__add-btn");
 const editBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
-const popupCheckingTimeout = 300;
 
 /* FUNCTIONS */
+
+class PopupForm {
+  constructor(data) {
+    this._name = data.name;
+    this._src = data.src;
+    this._alt = data.alt;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector("#template_cards")
+      .content.querySelector(".elements__card")
+      .cloneNode(true);
+    return cardElement;
+  }
+
+  _getModalTemplate() {
+    const modalElement = document
+      .querySelector("#template_modal-box")
+      .content.querySelector(".modal-box")
+      .cloneNode(true);
+    return modalElement;
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+    this._setEventListeners();
+    const cardName = this._element.querySelector(".elements__name");
+    const cardImage = this._element.querySelector(".elements__image");
+    cardName.textContent = this._name;
+    cardImage.src = this._src;
+    cardImage.alt = `Fotografía subida por el usuario de ${this._name}`;
+    return this._element;
+  }
+
+  _setEventListeners() {
+    const cardImage = this._element.querySelector(".elements__image");
+    const cardLike = this._element.querySelector(".elements__like-btn");
+    const cardDelete = this._element.querySelector(".elements__del-btn");
+
+    cardImage.addEventListener("click", (evt) =>
+      this._handleOpenModal(evt.target)
+    );
+    cardDelete.addEventListener("click", () => this._element.remove());
+    cardLike.addEventListener("click", (evt) => this._like(evt));
+  }
+
+  _handleOpenModal(img) {
+    const modalCheckTimeout = 300;
+    if (this._modalElement) {
+      return;
+    }
+    setTimeout(() => {
+      this.generateModal(img);
+    }, modalCheckTimeout);
+  }
+
+  _handleCloseModal() {
+    const delayValueMs = 600;
+    const noOpacity = 0;
+    if (!this._modalElement) {
+      return;
+    }
+    this._modalElement.style.transition = "opacity 600ms ease";
+    this._modalElement.style.opacity = noOpacity;
+    setTimeout(function () {
+      document.querySelector(".modal-box").remove();
+      document.removeEventListener("keydown", this._handleCloseEsc);
+      document.removeEventListener("click", this._handleCloseOutsideClick);
+    }, delayValueMs);
+  }
+
+  _handleCloseEsc(evt) {
+    if (evt.code === "Escape") {
+      this._handleCloseModal();
+    }
+  }
+
+  _handleCloseOutsideClick(evt) {
+    const parent = evt.target.closest(".modal-box");
+    if (!parent) {
+      this._handleCloseModal();
+    }
+  }
+
+  _like(evt) {
+    evt.target.classList.toggle("elements__like-btn_active");
+  }
+}
 
 /* POPUP CREATION AND CONFIG */
 
@@ -225,98 +313,63 @@ editBtn.addEventListener("click", () => {
   }, popupCheckingTimeout);
 });
 
-/* CARD TEMPLATE INJECTOR */
+// for (const key in cards) {
+//   const newCardName = cards[key].name;
+//   const newCardLink = cards[key].link;
+//   addNewCard(newCardName, newCardLink);
+//   document.querySelector(".elements__image").alt = cards[key].alt;
+// }
 
-const cards = [
-  {
-    name: "Times Square",
-    link: "./images/elements-img-TimesSquare.jpg",
-    alt: "Fotografía de Times Square en NYC",
-  },
-  {
-    name: "Monte Rushmore",
-    link: "./images/elements-img-Rushmore.jpg",
-    alt: "Fotografía del Monte Rushmore en Dakota del Sur",
-  },
-  {
-    name: "Puerta de las Nubes",
-    link: "./images/elements-img-CloudGate.jpg",
-    alt: "Fotografía de la Cloud Gate en Chicago",
-  },
-  {
-    name: "Golden Gate",
-    link: "./images/elements-img-GoldenGate.jpg",
-    alt: "Fotografía del Puente Golden Gate en San Francisco",
-  },
-  {
-    name: "Empire State",
-    link: "./images/elements-img-EmpireState.jpg",
-    alt: "Fotografía del edificio Empire State en NYC",
-  },
-  {
-    name: "Yellowstone",
-    link: "./images/elements-img-Yellowstone.jpg",
-    alt: "Fotografía del Parque Nacional Yellowstone",
-  },
-];
+// function addNewCard(placeName, placeLink) {
+//   const cardsContainer = document.querySelector(".elements");
+//   const templateCards = document.querySelector("#template_cards").content;
+//   const newCard = templateCards
+//     .querySelector(".elements__card")
+//     .cloneNode(true);
+//   newCard.id = "clonedCard";
+//   const cardName = newCard.querySelector(".elements__name");
+//   const cardImage = newCard.querySelector(".elements__image");
+//   const cardLike = newCard.querySelector(".elements__like-btn");
+//   const cardDelete = newCard.querySelector(".elements__del-btn");
+//   const noOpacity = 0;
+//   cardName.textContent = placeName;
+//   cardImage.src = placeLink;
+//   cardImage.alt = `Fotografía subida por el usuario de ${placeName}`;
+//   cardLike.addEventListener("click", (evt) =>
+//     evt.target.classList.toggle("elements__like-btn_active")
+//   );
+//   cardDelete.addEventListener("click", (evt) =>
+//     evt.target.closest("div").remove()
+//   );
+//   cardImage.addEventListener("click", (evt) => {
+//     openModalImage(evt.target);
+//     evt.target.closest("div").opacity = noOpacity;
+//   });
+//   cardsContainer.prepend(newCard);
+// }
 
-for (const key in cards) {
-  const newCardName = cards[key].name;
-  const newCardLink = cards[key].link;
-  addNewCard(newCardName, newCardLink);
-  document.querySelector(".elements__image").alt = cards[key].alt;
-}
+// /* MODAL BOX LOGIC */
 
-function addNewCard(placeName, placeLink) {
-  const templateCards = document.querySelector("#template_cards").content;
-  const cardsContainer = document.querySelector(".elements");
-  const newCard = templateCards
-    .querySelector(".elements__card")
-    .cloneNode(true);
-  newCard.id = "clonedCard";
-  const cardName = newCard.querySelector(".elements__name");
-  const cardImage = newCard.querySelector(".elements__image");
-  const cardLike = newCard.querySelector(".elements__like-btn");
-  const cardDelete = newCard.querySelector(".elements__del-btn");
-  const noOpacity = 0;
-  cardName.textContent = placeName;
-  cardImage.src = placeLink;
-  cardImage.alt = `Fotografía subida por el usuario de ${placeName}`;
-  cardLike.addEventListener("click", (evt) =>
-    evt.target.classList.toggle("elements__like-btn_active")
-  );
-  cardDelete.addEventListener("click", (evt) =>
-    evt.target.closest("div").remove()
-  );
-  cardImage.addEventListener("click", (evt) => {
-    openModalImage(evt.target);
-    evt.target.closest("div").opacity = noOpacity;
-  });
-  cardsContainer.prepend(newCard);
-}
-
-/* MODAL BOX LOGIC */
-
-function openModalImage(img) {
-  const activePopup = document.querySelector(".popup");
-  if (activePopup) {
-    return;
-  }
-  setTimeout(() => {
-    const templateModal = document.querySelector("#template_modal-box").content;
-    const modalBox = templateModal.cloneNode(true);
-    modalBox.id = "clonedModalBox";
-    const modalImg = modalBox.querySelector(".modal-box__image");
-    const modalTitle = modalBox.querySelector(".modal-box__title");
-    const modalCloseBtn = modalBox.querySelector(".modal-box__close-btn");
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
-    modalTitle.textContent = img.closest("div").textContent;
-    modalCloseBtn.addEventListener("click", (evt) => closeElement(evt));
-    document.body.prepend(modalBox);
-    document.addEventListener("keydown", closeOnEsc);
-    document.addEventListener("click", (event) => {
-      closeOnOutsideClick(event);
-    });
-  }, popupCheckingTimeout);
-}
+// function openModalImage(img) {
+//   const activePopup = document.querySelector(".popup");
+//   if (activePopup) {
+//     return;
+//   }
+//   setTimeout(() => {
+//     const templateModal = document.querySelector("#template_modal-box").content;
+//     const modalBox = templateModal.cloneNode(true);
+//     modalBox.id = "clonedModalBox";
+//     const modalImg = modalBox.querySelector(".modal-box__image");
+//     const modalTitle = modalBox.querySelector(".modal-box__title");
+//     const modalCloseBtn = modalBox.querySelector(".modal-box__close-btn");
+//     modalImg.src = img.src;
+//     modalImg.alt = img.alt;
+//     modalTitle.textContent = img.closest("div").textContent;
+//     modalCloseBtn.addEventListener("click", (evt) => closeElement(evt));
+//     document.body.prepend(modalBox);
+//     document.addEventListener("keydown", closeOnEsc);
+//     document.addEventListener("click", (event) => {
+//       closeOnOutsideClick(event);
+//     });
+//   }, popupCheckingTimeout);
+// }
