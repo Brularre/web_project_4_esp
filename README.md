@@ -1,12 +1,12 @@
 <div id="#inicio"></div>
 
-# Alrededor de Estados Unidos - Proyecto Cuarto, Quinto y Sexto Sprint de Practicum por <a href="https://github.com/brularre/">Bruno Larraín</a>
+# Alrededor de Estados Unidos - Proyecto Cuarto, Quinto, Sexto y Séptimo Sprint de Practicum por <a href="https://github.com/brularre/">Bruno Larraín</a>
 
 ## Sobre el Proyecto
 
-¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo esta la tercera iteración y el sexto sprint del curso. Acá incorporamos validación de formularios personalizada y otros detalles de eventos. 
+¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo al momento de escribir la cuarta iteración y el séptimo sprint del curso. Acá incorporamos el uso de Clases de Javascript y conceptos básicos de OOP (Object Oriented Programming). 
 
-Este proyecto me frustró bastante pues intenté un enfoque distinto al propuesto, creando y borrando los modales según se requiriera. Me cuesta un poco entender como hacer funcionar algunas funciones, pero en este caso la ayuda del Tutor de Practicum me logró orientar un poco y retomar el camino.
+Este proyecto me frustró bastante pues mantuve mi enfoque distinto al propuesto, creando y borrando los modales según se requiriera, pues no me gusta la idea de conservar el marcado y esconderlo mediante clases si es que puedo evitarlo. Sigo teniendo problemas, aunque menos, con entender los scope y como interactúan las funciones y las variables.
 
 ## Tecnologías usadas
 
@@ -14,10 +14,12 @@ Este proyecto me frustró bastante pues intenté un enfoque distinto al propuest
 -   [CSS](https://www.w3.org/TR/CSS/#css)
 -   [Javascript](https://www.javascript.com/)
 
-En este proyecto se incorporó la validación de formularios y otras funcionalidades usando eventos, agregando otras alternativas para cerrar los formularios.
+En esta iteración convertí toda mi funcionalidad en Clases Javascript, incluso los formularios, los cuales al momento de la escritura no están incluidos en los requisitos de este Sprint.
 
 ## Versiones
 
+2.4 - Refactor: Agregar Class Card, CardModal, FormValidator y PopupForm, reemplazar código anterior.
+2.3 - Refactor: Primer commit de prueba realizado para consultar una duda a Mentor Practicum.
 2.2 - Feat: Agrega funcionalidad de cierre de formularios, más unas mejoras propuestas por Tutor Practicum.
 2.1 - Feat: Agrega validación básica de formularios.
 2.0 - Feat: Commit con los nuevos cambios para entrega y revisión.
