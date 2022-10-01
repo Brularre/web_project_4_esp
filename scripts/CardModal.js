@@ -15,7 +15,6 @@ class CardModal {
 
   generateModal() {
     this._modalElement = this._getModalTemplate();
-
     const modalTitle = this._modalElement.querySelector(".modal-box__title");
     const modalImage = this._modalElement.querySelector(".modal-box__image");
     modalImage.src = this._src;

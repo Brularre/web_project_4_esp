@@ -77,7 +77,7 @@ class PopupForm {
 
   _handleCloseEsc = (evt) => {
     if (evt.code === "Escape") {
-      this._handleClosePopup;
+      this._handleClosePopup();
     }
   };
 
