@@ -22,7 +22,7 @@ class Card {
     const cardImage = this._element.querySelector(".elements__image");
     cardName.textContent = this._name;
     cardImage.src = this._src;
-    cardImage.alt = `Fotografía subida por el usuario de ${this._name}`;
+    cardImage.alt = `Fotografía subida por usuario/a de ${this._name}`;
     return this._element;
   }
 

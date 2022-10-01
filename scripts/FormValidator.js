@@ -2,9 +2,9 @@ const validationConfig = {
   formSelector: ".popup",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-btn",
-  inactiveButtonClass: ".popup__submit-btn_inactive",
-  inputErrorClass: ".popup__input_error",
-  errorClass: ".popup__error-msg",
+  inactiveButtonClass: "popup__submit-btn_inactive",
+  inputErrorClass: "popup__input_error",
+  errorClass: "popup__error-msg",
 };
 
 class FormValidator {
@@ -13,7 +13,7 @@ class FormValidator {
     this._input = formSelector.inputSelector;
     this._submitBtn = formSelector.submitButtonSelector;
     this._inactiveSubmit = formSelector.inactiveButtonClass;
-    this._inputError = formSelector.inputErrorClass;
+    this._inputErrorClass = formSelector.inputErrorClass;
     this._errorClass = formSelector.errorClass;
     this._form = formElement;
   }
@@ -45,10 +45,10 @@ class FormValidator {
 
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add("popup__submit-btn_inactive");
+      buttonElement.classList.add(this._inactiveSubmit);
       buttonElement.setAttribute("disabled", "");
     } else {
-      buttonElement.classList.remove("popup__submit-btn_inactive");
+      buttonElement.classList.remove(this._inactiveSubmit);
       buttonElement.removeAttribute("disabled");
     }
   }
@@ -63,17 +63,17 @@ class FormValidator {
     const errorElement = formElement.querySelector(
       `.popup__error-${inputElement.id}`
     );
-    inputElement.classList.add("popup__input_error");
+    inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add("popup__error-msg");
+    errorElement.classList.add(this._errorClass);
   }
 
   _hideInputError(formElement, inputElement) {
     const errorElement = formElement.querySelector(
       `.popup__error-${inputElement.id}`
     );
-    inputElement.classList.remove("popup__input_error");
-    errorElement.classList.remove("popup__error-msg");
+    inputElement.classList.remove(this._inputErrorClass);
+    errorElement.classList.remove(this._errorClass);
     errorElement.textContent = "";
   }
 }
