@@ -1,9 +1,9 @@
 .popup__close-btn {
   width: 26px;
   height: 26px;
-  position: fixed;
-  left: 90%;
-  top: -15%;
+  position: absolute;
+  left: 100%;
+  top: -30px;
   border: none;
   background: url(../../../images/popup__close-btn.svg) no-repeat;
   background-size: contain;
@@ -15,6 +15,6 @@
     width: 40px;
     height: 40px;
     left: 100%;
-    top: -15%;
+    top: -40px;
   }
 }

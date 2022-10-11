@@ -1,10 +1,7 @@
-import CardModal from "./CardModal.js";
-
 class Card {
   constructor(data) {
     this._name = data.name;
     this._src = data.src;
-    this._alt = data.alt;
   }
 
   _getTemplate() {
@@ -31,13 +28,29 @@ class Card {
     const cardLike = this._element.querySelector(".elements__like-btn");
     const cardDelete = this._element.querySelector(".elements__del-btn");
 
-    cardImage.addEventListener("click", (evt) => {
-      const cardModal = new CardModal(evt.target);
-      cardModal._handleOpenModal();
-    });
+    cardImage.addEventListener("click", this._handleOpenPopup);
     cardDelete.addEventListener("click", () => this._element.remove());
     cardLike.addEventListener("click", this._like);
   }
+
+  _handleOpenPopup = (img) => {
+    const modalCheckTimeout = 100;
+    const isPopupActive = document
+      .querySelector(".popup")
+      .classList.contains("popup_active");
+    if (isPopupActive) {
+      return;
+    }
+    setTimeout(() => {
+      const popupElement = document.querySelector(".popup");
+      const popupTitle = popupElement.querySelector(".popup__image-caption");
+      const popupImage = popupElement.querySelector(".popup__image");
+      popupImage.src = img.target.src;
+      popupImage.alt = img.target.alt;
+      popupTitle.textContent = this._name;
+      popupElement.classList.add("popup_active");
+    }, modalCheckTimeout);
+  };
 
   _like(evt) {
     evt.target.classList.toggle("elements__like-btn_active");

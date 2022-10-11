@@ -13,6 +13,7 @@
 /* ANIMACIONES */
 
 @import url(../animations/fadein.css);
+@import url(../animations/fadeout.css);
 
 /* HEADER */
 
@@ -34,9 +35,10 @@
 /* POPUP */
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_active/popup_active.css);
+@import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
-@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__form-title/popup__form-title.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/popup/__submit-btn/_inactive/popup__submit-btn_inactive.css);
 @import url(../blocks/popup/__submit-btn/_hover/popup__submit-btn_hover.css);
@@ -44,6 +46,8 @@
 @import url(../blocks/popup/__close-btn/_hover/popup__close-btn_hover.css);
 @import url(../blocks/popup/__input/_error/popup__input_error.css);
 @import url(../blocks/popup/__error-msg/popup__error-msg.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__image-caption/popup__image-caption.css);
 
 /* ELEMENTS */
 
@@ -59,12 +63,6 @@
 @import url(../blocks/elements/__del-btn/_hover/elements__del-btn_hover.css);
 
 /* MODAL BOX */
-
-@import url(../blocks/modal-box/modal-box.css);
-@import url(../blocks/modal-box/__image/modal-box__image.css);
-@import url(../blocks/modal-box/__title/modal-box__title.css);
-@import url(../blocks/modal-box/__close-btn/modal-box__close-btn.css);
-@import url(../blocks/modal-box/__close-btn/_hover/modal-box__close-btn_hover.css);
 
 /* FOOTER */
 

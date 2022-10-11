@@ -1,0 +1,6 @@
+.popup_active {
+  animation: 0.6s fadein;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}

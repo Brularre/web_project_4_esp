@@ -4,15 +4,15 @@
 
 ## Sobre el Proyecto
 
-¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo al momento de escribir la cuarta iteración y el séptimo sprint del curso. Acá incorporamos el uso de Clases de Javascript y conceptos básicos de OOP (Object Oriented Programming). 
+¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo al momento de escribir la cuarta iteración y el séptimo sprint del curso. Acá incorporamos el uso de Clases de Javascript y conceptos básicos de OOP (Object Oriented Programming).
 
 Este proyecto me frustró bastante pues mantuve mi enfoque distinto al propuesto, creando y borrando los modales según se requiriera, pues no me gusta la idea de conservar el marcado y esconderlo mediante clases si es que puedo evitarlo. Sigo teniendo problemas, aunque menos, con entender los scope y como interactúan las funciones y las variables.
 
 ## Tecnologías usadas
 
--   [HTML](https://html.spec.whatwg.org/)
--   [CSS](https://www.w3.org/TR/CSS/#css)
--   [Javascript](https://www.javascript.com/)
+- [HTML](https://html.spec.whatwg.org/)
+- [CSS](https://www.w3.org/TR/CSS/#css)
+- [Javascript](https://www.javascript.com/)
 
 En esta iteración convertí toda mi funcionalidad en Clases Javascript, incluso los formularios, los cuales al momento de la escritura no están incluidos en los requisitos de este Sprint.
 
