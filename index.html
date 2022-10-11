@@ -38,41 +38,39 @@
 
       <footer class="footer">© 2022 Alrededor de los EEUU</footer>
 
-
       <div class="popup">
         <button type="button" class="popup__close-btn"></button>
         <img src="#" alt="Imagen del popup" class="popup__image" />
         <h3 class="popup__image-caption">Título del popup</h3>
       </div>
 
-        <form class="popup popup__form" id="popup__add-form" novalidate>
-          <button type="button" class="popup__close-btn"></button>
-          <h2 class="popup__form-title">Nuevo Lugar</h2>
-          <div class="popup__input-container">
-            <input
-              type="text"
-              name="place-name"
-              id="place-name"
-              class="popup__input"
-              placeholder="Título"
-              minlength="2"
-              maxlength="30"
-            />
-            <span class="popup__error-place-name"></span>
-          </div>
-          <div class="popup__input-container">
-            <input
-              type="url"
-              name="place-link"
-              id="place-link"
-              class="popup__input"
-              placeholder="Enlace a la imagen"
-            />
-            <span class="popup__error-place-link"></span>
-          </div>
-          <button type="submit" class="popup__submit-btn">Guardar</button>
-        </form>
-
+      <form class="popup popup__form" id="popup__add-form" novalidate>
+        <button type="button" class="popup__close-btn"></button>
+        <h2 class="popup__form-title">Nuevo Lugar</h2>
+        <div class="popup__input-container">
+          <input
+            type="text"
+            name="place-name"
+            id="place-name"
+            class="popup__input"
+            placeholder="Título"
+            minlength="2"
+            maxlength="30"
+          />
+          <span class="popup__error-place-name"></span>
+        </div>
+        <div class="popup__input-container">
+          <input
+            type="url"
+            name="place-link"
+            id="place-link"
+            class="popup__input"
+            placeholder="Enlace a la imagen"
+          />
+          <span class="popup__error-place-link"></span>
+        </div>
+        <button type="submit" class="popup__submit-btn">Guardar</button>
+      </form>
 
       <form class="popup popup__form" id="popup__edit-form" novalidate>
         <button type="button" class="popup__close-btn"></button>
@@ -103,7 +101,7 @@
         </div>
         <button type="submit" class="popup__submit-btn">Guardar</button>
       </form>
-
+    </div>
 
     <!-- TEMPLATES -->
     <template id="template_cards">
