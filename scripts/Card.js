@@ -1,12 +1,10 @@
 import { openPopup } from "../utils/utils.js";
 
 class Card {
-  constructor(data) {
+  constructor(data, templateSelector) {
     this._name = data.name;
     this._src = data.src;
-    this._template = document
-      .querySelector("#template_cards")
-      .content.querySelector(".elements__card");
+    this._template = templateSelector;
   }
 
   _getTemplate() {

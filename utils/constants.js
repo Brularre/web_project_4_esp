@@ -32,6 +32,7 @@ const cards = [
 ];
 
 const validationConfig = {
+  formSelector: ".popup",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-btn",
   inactiveButtonClass: "popup__submit-btn_inactive",
