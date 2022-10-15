@@ -76,6 +76,7 @@ addForm.addEventListener("submit", (evt) => {
   const cardData = { name: placeName.value, src: placeLink.value };
   createCard(cardData);
   evt.target.reset();
+  formValidators["add-place"].resetValidation();
   handleClosePopup();
 });
 
