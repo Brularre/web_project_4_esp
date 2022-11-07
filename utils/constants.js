@@ -31,6 +31,16 @@ const cards = [
   },
 ];
 
+const cardSelectors = {
+  cardName: ".elements__name",
+  cardImage: ".elements__image",
+  cardLike: ".elements__like-btn",
+  cardDelete: ".elements__del-btn",
+  cardPopup: "#popup__image",
+  cardPopupCaption: ".popup__image-caption",
+  cardPopupImage: ".popup__image",
+};
+
 const validationConfig = {
   formSelector: ".popup",
   inputSelector: ".popup__input",
@@ -40,4 +50,45 @@ const validationConfig = {
   errorClass: "popup__error-msg",
 };
 
-export { cards, validationConfig };
+/* MARKUP SELECTORS */
+
+const addBtn = document.querySelector(".profile__add-btn");
+const editBtn = document.querySelector(".profile__edit-btn");
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
+const cardsContainer = document.querySelector(".elements");
+const cardTemplate = document
+  .querySelector("#template_cards")
+  .content.querySelector(".elements__card");
+
+/* POPUP SELECTORS */
+
+const cardPopup = document.querySelector("#popup__image");
+const formList = Array.from(document.forms);
+const addFormSelector = "popup__add-form";
+const editFormSelector = "popup__edit-form";
+
+const placeName = document.querySelector("#place-name");
+const placeLink = document.querySelector("#place-link");
+const formName = document.querySelector("#profile-name");
+const formDescription = document.querySelector("#profile-description");
+
+export {
+  cards,
+  cardSelectors,
+  validationConfig,
+  addBtn,
+  editBtn,
+  profileName,
+  profileDescription,
+  cardsContainer,
+  cardTemplate,
+  cardPopup,
+  formList,
+  addFormSelector,
+  editFormSelector,
+  placeName,
+  placeLink,
+  formName,
+  formDescription,
+};
