@@ -1,32 +1,61 @@
+// ahora podemos importar imágenes
+// Webpack añadirá las rutas correctas a las variables
+const timesSquareImage = new URL(
+  "../images/elements-img-TimesSquare.jpg",
+  import.meta.url
+);
+const rushmoreImage = new URL(
+  "../images/elements-img-Rushmore.jpg",
+  import.meta.url
+);
+const cloudGateImage = new URL(
+  "../images/elements-img-CloudGate.jpg",
+  import.meta.url
+);
+const goldenGateImage = new URL(
+  "../images/elements-img-GoldenGate.jpg",
+  import.meta.url
+);
+const empireStateImage = new URL(
+  "../images/elements-img-EmpireState.jpg",
+  import.meta.url
+);
+const yellowstoneImage = new URL(
+  "../images/elements-img-Yellowstone.jpg",
+  import.meta.url
+);
+// const jamesImage = new URL("./images/james.jpg", import.meta.url);
+// const bryantImage = new URL("./images/bryant.jpg", import.meta.url);
+
 const cards = [
   {
     cardName: "Times Square",
-    src: "./images/elements-img-TimesSquare.jpg",
+    src: timesSquareImage,
     alt: "Fotografía de Times Square en NYC",
   },
   {
     cardName: "Monte Rushmore",
-    src: "./images/elements-img-Rushmore.jpg",
+    src: rushmoreImage,
     alt: "Fotografía del Monte Rushmore en Dakota del Sur",
   },
   {
     cardName: "Puerta de las Nubes",
-    src: "./images/elements-img-CloudGate.jpg",
+    src: cloudGateImage,
     alt: "Fotografía de la Cloud Gate en Chicago",
   },
   {
     cardName: "Golden Gate",
-    src: "./images/elements-img-GoldenGate.jpg",
+    src: goldenGateImage,
     alt: "Fotografía del Puente Golden Gate en San Francisco",
   },
   {
     cardName: "Empire State",
-    src: "./images/elements-img-EmpireState.jpg",
+    src: empireStateImage,
     alt: "Fotografía del edificio Empire State en NYC",
   },
   {
     cardName: "Yellowstone",
-    src: "./images/elements-img-Yellowstone.jpg",
+    src: yellowstoneImage,
     alt: "Fotografía del Parque Nacional Yellowstone",
   },
 ];
