@@ -1,23 +1,28 @@
 <div id="#inicio"></div>
 
-# Alrededor de Estados Unidos - Proyecto Cuarto, Quinto, Sexto y Séptimo Sprint de Practicum por <a href="https://github.com/brularre/">Bruno Larraín</a>
+# Alrededor de Estados Unidos - Proyecto Cuarto a Octavo Sprint de Practicum por <a href="https://github.com/brularre/">Bruno Larraín</a>
 
 ## Sobre el Proyecto
 
-¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo al momento de escribir la cuarta iteración y el séptimo sprint del curso. Acá incorporamos el uso de Clases de Javascript y conceptos básicos de OOP (Object Oriented Programming).
+¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo al momento de escribir la quinta iteración y octavo sprint del curso. Acá incorporamos el uso de más Clases de Javascript para los Popup, renderización de Cards y otras funciones que representan conceptos intermedios de OOP (Object Oriented Programming) como los loose coupling.
 
-Este proyecto me frustró bastante pues mantuve mi enfoque distinto al propuesto, creando y borrando los modales según se requiriera, pues no me gusta la idea de conservar el marcado y esconderlo mediante clases si es que puedo evitarlo. Sigo teniendo problemas, aunque menos, con entender los scope y como interactúan las funciones y las variables.
+En este proyecto también se empiezan a usar herramientas para bundling, refactorización, transcompilación, minificación y autoprefixing del Proyecto como Webpack, Babel, PostCSS, core-js
+
+El proyecto se complejiza pero he podido seguir avanzando con perseverancia.
 
 ## Tecnologías usadas
 
 - [HTML](https://html.spec.whatwg.org/)
 - [CSS](https://www.w3.org/TR/CSS/#css)
 - [Javascript](https://www.javascript.com/)
-
-En esta iteración convertí toda mi funcionalidad en Clases Javascript, incluso los formularios, los cuales al momento de la escritura no están incluidos en los requisitos de este Sprint.
+- [Webpack](https://webpack.js.org/)
+- [Babel](https://babeljs.io/)
+- [PostCSS](https://postcss.org/)
 
 ## Versiones
 
+3.0 - Feat: Agregar funcionalidad de bundling con Webpack y asociados.
+2.5 - Refactor: Agregar Class Section, UserInfo, Popup, PopupWithImage, PopupWithForm y vincular algunas clases.
 2.4 - Refactor: Agregar Class Card, CardModal, FormValidator y PopupForm, reemplazar código anterior.
 2.3 - Refactor: Primer commit de prueba realizado para consultar una duda a Mentor Practicum.
 2.2 - Feat: Agrega funcionalidad de cierre de formularios, más unas mejoras propuestas por Tutor Practicum.
