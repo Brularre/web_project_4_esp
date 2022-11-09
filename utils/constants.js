@@ -1,31 +1,31 @@
 const cards = [
   {
-    name: "Times Square",
+    cardName: "Times Square",
     src: "./images/elements-img-TimesSquare.jpg",
     alt: "Fotografía de Times Square en NYC",
   },
   {
-    name: "Monte Rushmore",
+    cardName: "Monte Rushmore",
     src: "./images/elements-img-Rushmore.jpg",
     alt: "Fotografía del Monte Rushmore en Dakota del Sur",
   },
   {
-    name: "Puerta de las Nubes",
+    cardName: "Puerta de las Nubes",
     src: "./images/elements-img-CloudGate.jpg",
     alt: "Fotografía de la Cloud Gate en Chicago",
   },
   {
-    name: "Golden Gate",
+    cardName: "Golden Gate",
     src: "./images/elements-img-GoldenGate.jpg",
     alt: "Fotografía del Puente Golden Gate en San Francisco",
   },
   {
-    name: "Empire State",
+    cardName: "Empire State",
     src: "./images/elements-img-EmpireState.jpg",
     alt: "Fotografía del edificio Empire State en NYC",
   },
   {
-    name: "Yellowstone",
+    cardName: "Yellowstone",
     src: "./images/elements-img-Yellowstone.jpg",
     alt: "Fotografía del Parque Nacional Yellowstone",
   },
@@ -63,8 +63,8 @@ const cardTemplate = document
 
 /* POPUP SELECTORS */
 
-const cardPopup = document.querySelector("#popup__image");
 const formList = Array.from(document.forms);
+const imagePopupSelector = "popup__image";
 const addFormSelector = "popup__add-form";
 const editFormSelector = "popup__edit-form";
 
@@ -83,8 +83,8 @@ export {
   profileDescription,
   cardsContainer,
   cardTemplate,
-  cardPopup,
   formList,
+  imagePopupSelector,
   addFormSelector,
   editFormSelector,
   placeName,

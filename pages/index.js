@@ -4,7 +4,8 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import { PopupWithImage, PopupWithForm } from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 import {
   cards,
@@ -16,31 +17,13 @@ import {
   profileDescription,
   cardsContainer,
   cardTemplate,
-  cardPopup,
   formList,
+  imagePopupSelector,
   addFormSelector,
   editFormSelector,
   placeName,
   placeLink,
-  formName,
-  formDescription,
 } from "../utils/constants.js";
-
-/* CARD INJECTOR */
-
-const cardList = new Section(
-  {
-    items: cards,
-    renderer: (item) => {
-      const newCard = new Card(item, cardTemplate);
-      const cardElement = newCard.generateCard(cardSelectors);
-      cardList.addItem(cardElement);
-    },
-  },
-  cardsContainer
-);
-
-cardList.renderItems();
 
 /* USER METHODS */
 
@@ -49,7 +32,79 @@ const userInfo = new UserInfo({
   description: profileDescription,
 });
 
-/* ADD VALIDATION INSTANCES */
+/* IMAGE POPUP LOGIC */
+
+const imagePopup = new PopupWithImage(imagePopupSelector);
+
+imagePopup._setEventListeners();
+
+/* CARD INJECTOR */
+
+const cardList = new Section(
+  {
+    items: cards,
+    renderer: (item) => {
+      cardList.addItem(createCard(item));
+    },
+  },
+  cardsContainer
+);
+
+const createCard = (cardData) => {
+  const newCard = new Card(cardData, cardTemplate, {
+    handleCardClick: function () {
+      const popupCaption = newCard._cardName.textContent;
+      imagePopup.openPopup(this, popupCaption);
+    },
+  });
+  const cardElement = newCard.generateCard(cardSelectors);
+  return cardElement;
+  cardList.addItem(cardElement);
+};
+
+cardList.renderItems();
+
+/* ADD FORM LOGIC */
+
+const addForm = new PopupWithForm(addFormSelector, {
+  submitCallback: (evt) => {
+    evt.preventDefault();
+    const cardData = { cardName: placeName.value, src: placeLink.value };
+    cardsContainer.prepend(createCard(cardData));
+    formValidators[addFormSelector].resetValidation();
+    addForm.closePopup();
+  },
+});
+
+addForm._setEventListeners();
+
+addBtn.addEventListener("click", () => {
+  addForm.openPopup();
+  formValidators[addFormSelector].resetValidation();
+});
+
+/* EDIT FORM LOGIC */
+
+const editForm = new PopupWithForm(editFormSelector, {
+  submitCallback: (evt) => {
+    evt.preventDefault();
+    const { ["profile-name"]: username, ["profile-description"]: description } =
+      editForm._getInputValues();
+    userInfo.setUserInfo(username, description);
+    editForm.closePopup();
+  },
+});
+
+editForm._setEventListeners();
+
+editBtn.addEventListener("click", () => {
+  const { username, description } = userInfo.getUserInfo();
+  editForm._setInputValues([username, description]);
+  editForm.openPopup();
+  formValidators[editFormSelector].resetValidation();
+});
+
+/* VALIDATION LOGIC */
 
 const formValidators = {};
 
@@ -63,55 +118,3 @@ const enableValidation = (validationConfig) => {
 };
 
 enableValidation(validationConfig);
-
-/* POPUP INSTANCES  */
-
-// const imagePopup = new PopupWithImage(cardPopup, {
-//   handleCardClick: () => {},
-// });
-
-function createCard(data) {
-  const newCard = new Card(data, cardTemplate);
-  const cardElement = newCard.generateCard(cardSelectors);
-  cardsContainer.prepend(cardElement);
-}
-
-const addForm = new PopupWithForm(addFormSelector, {
-  submitCallback: (evt) => {
-    // evt.preventDefault();
-    // const cardData = { name: placeName.value, src: placeLink.value };
-    // const newCard = new Card(data, cardTemplate);
-    // const cardElement = newCard.generateCard(cardSelectors);
-    // cardsContainer.prepend(cardElement);
-    // evt.target.reset();
-    // formValidators[addFormSelector].resetValidation();
-    // handleClosePopup();
-  },
-});
-
-addForm._setEventListeners();
-
-const editForm = new PopupWithForm(editFormSelector, {
-  submitCallback: (evt) => {
-    evt.preventDefault();
-    const { ["profile-name"]: username, ["profile-description"]: description } =
-      editForm._getInputValues();
-    profileName.textContent = username;
-    profileDescription.textContent = description;
-    editForm.closePopup();
-  },
-});
-
-editForm._setEventListeners();
-
-addBtn.addEventListener("click", () => {
-  addForm.openPopup();
-  formValidators[addFormSelector].resetValidation();
-});
-
-/* EDIT FORM LOGIC  */
-
-editBtn.addEventListener("click", () => {
-  editForm.openPopup();
-  formValidators[editFormSelector].resetValidation();
-});
