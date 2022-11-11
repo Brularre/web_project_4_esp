@@ -85,7 +85,7 @@ const addBtn = document.querySelector(".profile__add-btn");
 const editBtn = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-const cardsContainer = document.querySelector(".elements");
+const cardsContainerSelector = ".elements";
 const cardTemplate = document
   .querySelector("#template_cards")
   .content.querySelector(".elements__card");
@@ -110,7 +110,7 @@ export {
   editBtn,
   profileName,
   profileDescription,
-  cardsContainer,
+  cardsContainerSelector,
   cardTemplate,
   formList,
   imagePopupSelector,
