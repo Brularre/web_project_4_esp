@@ -22,8 +22,6 @@ import {
   imagePopupSelector,
   addFormSelector,
   editFormSelector,
-  placeName,
-  placeLink,
 } from "../utils/constants.js";
 
 /* USER METHODS */
