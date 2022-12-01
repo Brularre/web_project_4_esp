@@ -1,11 +1,12 @@
 /* IMPORTS */
 
-import Card from "./../components/Card.js";
-import FormValidator from "./../components/FormValidator.js";
-import Section from "./../components/Section.js";
-import UserInfo from "./../components/UserInfo.js";
-import PopupWithImage from "./../components/PopupWithImage.js";
-import PopupWithForm from "./../components/PopupWithForm.js";
+import "./index.css";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 import {
   cards,
@@ -15,15 +16,13 @@ import {
   editBtn,
   profileName,
   profileDescription,
-  cardsContainer,
+  cardsContainerSelector,
   cardTemplate,
   formList,
   imagePopupSelector,
   addFormSelector,
   editFormSelector,
-  placeName,
-  placeLink,
-} from "./../utils/constants.js";
+} from "../utils/constants.js";
 
 /* USER METHODS */
 
@@ -36,7 +35,7 @@ const userInfo = new UserInfo({
 
 const imagePopup = new PopupWithImage(imagePopupSelector);
 
-imagePopup._setEventListeners();
+imagePopup.setEventListeners();
 
 /* CARD INJECTOR */
 
@@ -44,22 +43,21 @@ const cardList = new Section(
   {
     items: cards,
     renderer: (item) => {
-      cardList.addItem(createCard(item));
+      cardList.appendItem(createCard(item));
     },
   },
-  cardsContainer
+  cardsContainerSelector
 );
 
 const createCard = (cardData) => {
   const newCard = new Card(cardData, cardTemplate, {
-    handleCardClick: function () {
+    handleCardClick: function (evt) {
       const popupCaption = newCard._cardName.textContent;
-      imagePopup.openPopup(this, popupCaption);
+      imagePopup.openPopup(evt.target, popupCaption);
     },
   });
   const cardElement = newCard.generateCard(cardSelectors);
   return cardElement;
-  cardList.addItem(cardElement);
 };
 
 cardList.renderItems();
@@ -69,14 +67,15 @@ cardList.renderItems();
 const addForm = new PopupWithForm(addFormSelector, {
   submitCallback: (evt) => {
     evt.preventDefault();
-    const cardData = { cardName: placeName.value, src: placeLink.value };
-    cardsContainer.prepend(createCard(cardData));
+    const { ["place-name"]: cardName, ["place-link"]: src } =
+      addForm.getInputValues();
+    cardList.prependItem(createCard({ cardName, src }));
     formValidators[addFormSelector].resetValidation();
     addForm.closePopup();
   },
 });
 
-addForm._setEventListeners();
+addForm.setEventListeners();
 
 addBtn.addEventListener("click", () => {
   addForm.openPopup();
@@ -89,17 +88,17 @@ const editForm = new PopupWithForm(editFormSelector, {
   submitCallback: (evt) => {
     evt.preventDefault();
     const { ["profile-name"]: username, ["profile-description"]: description } =
-      editForm._getInputValues();
+      editForm.getInputValues();
     userInfo.setUserInfo(username, description);
     editForm.closePopup();
   },
 });
 
-editForm._setEventListeners();
+editForm.setEventListeners();
 
 editBtn.addEventListener("click", () => {
   const { username, description } = userInfo.getUserInfo();
-  editForm._setInputValues([username, description]);
+  editForm.setInputValues([username, description]);
   editForm.openPopup();
   formValidators[editFormSelector].resetValidation();
 });
