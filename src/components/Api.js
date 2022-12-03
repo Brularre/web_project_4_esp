@@ -4,10 +4,19 @@ export default class Api {
     this._headers = headers;
   }
 
-  getInitialCards() {
+  renderInitialCards({ renderer }) {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    });
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(res.status);
+      })
+      .then((items) => {
+        renderer(items);
+      })
+      .catch((err) => {
+        alert(`Error ${err}. Inténtalo de nuevo más tarde`);
+      });
   }
 
   getUser() {
@@ -16,14 +25,25 @@ export default class Api {
     });
   }
 
-  // editUser() {
-  //   return fetch(`${this._baseUrl}/users/me`, {
-  //     method: "PATCH", {
-  //     _headers: this._headers
-  //   },
-  //   body: JSON.stringify({
-  //     name: "",
+  editUser(name, about) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        name: name,
+        about: about,
+      }),
+      headers: this._headers,
+    });
+  }
 
-  //   })
-  // })
+  postContent(name, link) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
+      headers: this._headers,
+    });
+  }
 }

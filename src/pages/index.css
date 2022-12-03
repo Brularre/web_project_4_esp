@@ -55,6 +55,7 @@
 @import url(../blocks/elements/__card/elements__card.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__like-btn/elements__like-btn.css);
+@import url(../blocks/elements/__like-number/elements__like-number.css);
 @import url(../blocks/elements/__like-btn/_hover/elements__like-btn_hover.css);
 @import url(../blocks/elements/__like-btn/_active/elements__like-btn_active.css);
 @import url(../blocks/elements/__name/elements__name.css);

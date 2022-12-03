@@ -49,9 +49,18 @@ const cardSection = new Section(
 const addForm = new PopupWithForm(addFormSelector, {
   submitCallback: (evt) => {
     evt.preventDefault();
-    const { ["place-name"]: cardName, ["place-link"]: src } =
+    const { ["place-name"]: name, ["place-link"]: link } =
       addForm.getInputValues();
-    cardSection.prependItem(createCard({ cardName, src }));
+    api
+      .postContent(name, link)
+      .then((res) => {
+        return res.ok
+          ? cardSection.prependItem(createCard({ name, link }))
+          : Promise.reject(res.status);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     formValidators[addFormSelector].resetValidation();
     addForm.closePopup();
   },
@@ -70,8 +79,17 @@ const editForm = new PopupWithForm(editFormSelector, {
     evt.preventDefault();
     const { ["profile-name"]: username, ["profile-about"]: about } =
       editForm.getInputValues();
-    userInfo.setUserInfo(username, about);
-    editForm.closePopup();
+    api
+      .editUser(username, about)
+      .then((res) => {
+        return res.ok
+          ? userInfo.setUserInfo(username, about)
+          : Promise.reject(res.status);
+      })
+      .catch((err) => {
+        alert(`Error ${err}. Inténtalo de nuevo más tarde`);
+      })
+      .finally(editForm.closePopup());
   },
 });
 
@@ -111,15 +129,20 @@ const createCard = (cardData) => {
   return cardElement;
 };
 
+api.renderInitialCards({
+  renderer: (res) => {
+    cardSection.renderItems(res);
+  },
+});
+
 api
-  .getInitialCards()
+  .getUser()
   .then((res) => {
     return res.ok ? res.json() : Promise.reject(res.status);
   })
-  .then((items) => {
-    cardSection.renderItems(items);
+  .then(({ name, about }) => {
+    userInfo.setUserInfo(name, about);
   })
   .catch((err) => {
-    console.log(err);
-  })
-  .finally(console.log("All done!"));
+    alert(`Error ${err}. Inténtalo de nuevo más tarde`);
+  });
