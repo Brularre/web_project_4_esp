@@ -12,6 +12,7 @@ const cardTemplate = document
 /* POPUP SELECTORS */
 
 const formList = Array.from(document.forms);
+const deleteCardSelector = "popup__delete-card";
 const imagePopupSelector = "popup__image";
 const addFormSelector = "popup__add-form";
 const editFormSelector = "popup__edit-form";
@@ -25,6 +26,7 @@ const cardSelectors = {
   cardName: ".elements__name",
   cardImage: ".elements__image",
   cardLike: ".elements__like-btn",
+  cardNumber: ".elements__like-number",
   cardDelete: ".elements__del-btn",
   cardPopup: "#popup__image",
   cardPopupCaption: ".popup__image-caption",
@@ -44,7 +46,7 @@ const apiConfig = {
   baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02/",
   headers: {
     authorization: "3a5f7fd0-4f77-4f83-8848-cbfc8ddc2f6c",
-    // "Content-Type": "application/json",
+    "Content-Type": "application/json; charset=UTF-8",
   },
 };
 
@@ -54,7 +56,6 @@ const userInfoConfig = {
 };
 
 export {
-  cards,
   cardSelectors,
   validationConfig,
   apiConfig,
@@ -66,6 +67,7 @@ export {
   cardsContainerSelector,
   cardTemplate,
   formList,
+  deleteCardSelector,
   imagePopupSelector,
   addFormSelector,
   editFormSelector,
@@ -75,60 +77,60 @@ export {
   formAbout,
 };
 
-const timesSquareImage = new URL(
-  "../images/elements-img-TimesSquare.jpg",
-  import.meta.url
-);
-const rushmoreImage = new URL(
-  "../images/elements-img-Rushmore.jpg",
-  import.meta.url
-);
-const cloudGateImage = new URL(
-  "../images/elements-img-CloudGate.jpg",
-  import.meta.url
-);
-const goldenGateImage = new URL(
-  "../images/elements-img-GoldenGate.jpg",
-  import.meta.url
-);
-const empireStateImage = new URL(
-  "../images/elements-img-EmpireState.jpg",
-  import.meta.url
-);
-const yellowstoneImage = new URL(
-  "../images/elements-img-Yellowstone.jpg",
-  import.meta.url
-);
+// const timesSquareImage = new URL(
+//   "../images/elements-img-TimesSquare.jpg",
+//   import.meta.url
+// );
+// const rushmoreImage = new URL(
+//   "../images/elements-img-Rushmore.jpg",
+//   import.meta.url
+// );
+// const cloudGateImage = new URL(
+//   "../images/elements-img-CloudGate.jpg",
+//   import.meta.url
+// );
+// const goldenGateImage = new URL(
+//   "../images/elements-img-GoldenGate.jpg",
+//   import.meta.url
+// );
+// const empireStateImage = new URL(
+//   "../images/elements-img-EmpireState.jpg",
+//   import.meta.url
+// );
+// const yellowstoneImage = new URL(
+//   "../images/elements-img-Yellowstone.jpg",
+//   import.meta.url
+// );
 
-const cards = [
-  {
-    cardName: "Times Square",
-    src: timesSquareImage,
-    alt: "Fotografía de Times Square en NYC",
-  },
-  {
-    cardName: "Monte Rushmore",
-    src: rushmoreImage,
-    alt: "Fotografía del Monte Rushmore en Dakota del Sur",
-  },
-  {
-    cardName: "Puerta de las Nubes",
-    src: cloudGateImage,
-    alt: "Fotografía de la Cloud Gate en Chicago",
-  },
-  {
-    cardName: "Golden Gate",
-    src: goldenGateImage,
-    alt: "Fotografía del Puente Golden Gate en San Francisco",
-  },
-  {
-    cardName: "Empire State",
-    src: empireStateImage,
-    alt: "Fotografía del edificio Empire State en NYC",
-  },
-  {
-    cardName: "Yellowstone",
-    src: yellowstoneImage,
-    alt: "Fotografía del Parque Nacional Yellowstone",
-  },
-];
+// const cards = [
+//   {
+//     cardName: "Times Square",
+//     src: timesSquareImage,
+//     alt: "Fotografía de Times Square en NYC",
+//   },
+//   {
+//     cardName: "Monte Rushmore",
+//     src: rushmoreImage,
+//     alt: "Fotografía del Monte Rushmore en Dakota del Sur",
+//   },
+//   {
+//     cardName: "Puerta de las Nubes",
+//     src: cloudGateImage,
+//     alt: "Fotografía de la Cloud Gate en Chicago",
+//   },
+//   {
+//     cardName: "Golden Gate",
+//     src: goldenGateImage,
+//     alt: "Fotografía del Puente Golden Gate en San Francisco",
+//   },
+//   {
+//     cardName: "Empire State",
+//     src: empireStateImage,
+//     alt: "Fotografía del edificio Empire State en NYC",
+//   },
+//   {
+//     cardName: "Yellowstone",
+//     src: yellowstoneImage,
+//     alt: "Fotografía del Parque Nacional Yellowstone",
+//   },
+// ];
