@@ -4,6 +4,8 @@ import "./index.css";
 import Api from "../components/Api.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Popup from "../components/Popup.js";
+import PopupDeleteCard from "../components/PopupDeleteCard.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
@@ -19,6 +21,7 @@ import {
   cardsContainerSelector,
   cardTemplate,
   formList,
+  deleteCardSelector,
   imagePopupSelector,
   addFormSelector,
   editFormSelector,
@@ -26,16 +29,41 @@ import {
 
 /* CLASS INSTANCES */
 
-// Api
+// Api Methods
 const api = new Api(apiConfig);
 
-// User
+api.renderInitialCards({
+  renderer: (res) => {
+    cardSection.renderItems(res);
+  },
+});
+
+api
+  .getUser()
+  .then((res) => {
+    return res.ok ? res.json() : Promise.reject(res.status);
+  })
+  .then(({ name, about }) => {
+    userInfo.setUserInfo(name, about);
+  })
+  .catch((err) => {
+    console.log(`Error ${err}. Inténtalo de nuevo más tarde`);
+  });
+
+// User Info Methods
 const userInfo = new UserInfo(userInfoConfig);
 
-// Image Popup
+// Delete Card Popup Methods
+const popupCardDelete = new PopupDeleteCard(deleteCardSelector);
+
+popupCardDelete.setEventListeners();
+
+// Image Popup Methods
 const imagePopup = new PopupWithImage(imagePopupSelector);
 
-// Card Section
+imagePopup.setEventListeners();
+
+// Card Section Methods
 const cardSection = new Section(
   {
     renderer: (item) => {
@@ -120,29 +148,12 @@ enableValidation(validationConfig);
 
 const createCard = (cardData) => {
   const newCard = new Card(cardData, cardTemplate, {
-    handleCardClick: function (evt) {
+    handleCardClick: (evt) => {
       const popupCaption = newCard._cardName.textContent;
       imagePopup.openPopup(evt.target, popupCaption);
     },
+    handleDeleteClick: (evt) => popupCardDelete.openPopup(),
   });
   const cardElement = newCard.generateCard(cardSelectors);
   return cardElement;
 };
-
-api.renderInitialCards({
-  renderer: (res) => {
-    cardSection.renderItems(res);
-  },
-});
-
-api
-  .getUser()
-  .then((res) => {
-    return res.ok ? res.json() : Promise.reject(res.status);
-  })
-  .then(({ name, about }) => {
-    userInfo.setUserInfo(name, about);
-  })
-  .catch((err) => {
-    alert(`Error ${err}. Inténtalo de nuevo más tarde`);
-  });

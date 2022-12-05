@@ -12,6 +12,7 @@ const cardTemplate = document
 /* POPUP SELECTORS */
 
 const formList = Array.from(document.forms);
+const deleteCardSelector = "popup__delete-card";
 const imagePopupSelector = "popup__image";
 const addFormSelector = "popup__add-form";
 const editFormSelector = "popup__edit-form";
@@ -66,6 +67,7 @@ export {
   cardsContainerSelector,
   cardTemplate,
   formList,
+  deleteCardSelector,
   imagePopupSelector,
   addFormSelector,
   editFormSelector,
