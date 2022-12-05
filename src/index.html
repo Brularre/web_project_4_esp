@@ -18,14 +18,21 @@
       </header>
 
       <section class="profile">
-        <img
-          src="<%=require('./images/profile_avatar.jpg')%>"
-          alt="Imagen de perfil del usuario"
-          class="profile__avatar"
-        />
+        <a class="profile__avatar-wrapper">
+          <div class="profile__avatar-overlay">
+            <div class="profile__avatar-edit-icon"></div>
+          </div>
+          <img
+            src="<%=require('./images/profile_avatar.jpg')%>"
+            alt="Imagen de perfil del usuario"
+            class="profile__avatar"
+          />
+        </a>
         <div class="profile__info">
-          <h1 class="profile__name"></h1>
-          <button type="button" class="profile__edit-btn"></button>
+          <span
+            ><h1 class="profile__name"></h1>
+            <button type="button" class="profile__edit-btn"></button
+          ></span>
           <p class="profile__about"></p>
         </div>
         <button type="button" class="profile__add-btn"></button>

@@ -36,6 +36,16 @@ export default class Api {
     });
   }
 
+  editAvatar(avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+      headers: this._headers,
+    });
+  }
+
   postContent(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
