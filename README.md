@@ -19,6 +19,7 @@ En esta iteración se agregaron cambios para extraer y editar información del u
 
 ## Versiones
 
+3.8 - Feat: Agrega ciertos cambios para QoL.
 3.7 - Feat: Agrega funcionalidad de likes server-side.
 3.6 - Feat: Agrega funcionalidad para borrar las tarjetas del usuario actual del servidor.
 3.5 - Feat: Agrega Editabilidad al Avatar y leve refactoring.
