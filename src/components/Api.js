@@ -15,7 +15,7 @@ export default class Api {
         renderer(items);
       })
       .catch((err) => {
-        console.log(`Error ${err}. Inténtalo de nuevo más tarde`);
+        console.log(`Error ${err}.`);
       });
   }
 

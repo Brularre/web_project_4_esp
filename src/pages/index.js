@@ -122,7 +122,7 @@ api
     });
   })
   .catch((err) => {
-    console.log(`Error ${err}. Inténtalo de nuevo más tarde`);
+    console.log(`Error ${err}.`);
   });
 
 /* EVENT LISTENERS */
@@ -163,6 +163,7 @@ function cardRenderer(item) {
 // Add Form Submit Handler
 function addFormSubmit(evt) {
   evt.preventDefault();
+  this.querySelector(".popup__submit-btn").textContent = "Guardando...";
   const { ["place-name"]: name, ["place-link"]: link } =
     addForm.getInputValues();
   api
@@ -174,17 +175,19 @@ function addFormSubmit(evt) {
       cardSection.prependItem(createCard({ name, link, _id, owner }));
     })
     .catch((err) => {
-      console.log(err);
+      console.log(`Error ${err}.`);
     })
     .finally(() => {
       formValidators[addFormSelector].resetValidation();
       addForm.closePopup();
+      this.querySelector(".popup__submit-btn").textContent = "Crea";
     });
 }
 
 // Edit Form Submit Handler
 function editFormSubmit(evt) {
   evt.preventDefault();
+  this.querySelector(".popup__submit-btn").textContent = "Guardando...";
   const { ["profile-name"]: username, ["profile-about"]: about } =
     editForm.getInputValues();
   api
@@ -195,17 +198,19 @@ function editFormSubmit(evt) {
         : Promise.reject(res.status);
     })
     .catch((err) => {
-      console.log(`Error ${err}. Inténtalo de nuevo más tarde`);
+      console.log(`Error ${err}.`);
     })
     .finally(() => {
       formValidators[editFormSelector].resetValidation();
       editForm.closePopup();
+      this.querySelector(".popup__submit-btn").textContent = "Guardar";
     });
 }
 
 // Edit Avatar Submit Handler
 function avatarFormSubmit(evt) {
   evt.preventDefault();
+  this.querySelector(".popup__submit-btn").textContent = "Guardando...";
   const { ["profile-avatar"]: avatar } = avatarForm.getInputValues();
   api
     .editAvatar(avatar)
@@ -215,11 +220,12 @@ function avatarFormSubmit(evt) {
         : Promise.reject(res.status);
     })
     .catch((err) => {
-      console.log(`Error ${err}. Inténtalo de nuevo más tarde`);
+      console.log(`Error ${err}.`);
     })
     .finally(() => {
       formValidators[avatarFormSelector].resetValidation();
       avatarForm.closePopup();
+      this.querySelector(".popup__submit-btn").textContent = "Guardar";
     });
 }
 // Delete Form Submit Handler

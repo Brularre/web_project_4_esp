@@ -1,14 +1,12 @@
 <div id="#inicio"></div>
 
-# Alrededor de Estados Unidos - Proyecto Cuarto a Octavo Sprint de Practicum por <a href="https://github.com/brularre/">Bruno Larraín</a>
+# Alrededor de Estados Unidos - Proyecto Cuarto a Noveno Sprint de Practicum por <a href="https://github.com/brularre/">Bruno Larraín</a>
 
 ## Sobre el Proyecto
 
-¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo al momento de escribir la quinta iteración y octavo sprint del curso. Acá incorporamos el uso de más Clases de Javascript para los Popup, renderización de Cards y otras funciones que representan conceptos intermedios de OOP (Object Oriented Programming) como los loose coupling.
+¡Hola! Si estás leyendo esto, estás revisando y/o visitando mi portafolio para ver mi trabajo. Sigue mi progreso en el Curso de Desarrollo Web de Practicum, este es el cuarto proyecto desarrollado para Practicum, siendo al momento de escribir la sexta iteración y noveno sprint del curso. Acá incorporamos el uso de una pequeña API y una interacción con un servidor designado para nosotros para poder hacer cambios server-side.
 
-En este proyecto también se empiezan a usar herramientas para bundling, refactorización, transcompilación, minificación y autoprefixing del Proyecto como Webpack, Babel, PostCSS, core-js
-
-El proyecto se complejiza pero he podido seguir avanzando con perseverancia.
+En esta iteración se agregaron cambios para extraer y editar información del usuario (datos y avatar), cargar, agregar y borrar tarjetas, además de mostrar, agregar y remover likes desde el servidor mediante el comando Fetch y los métodos GET, POST, PATCH, PUT y DELETE.
 
 ## Tecnologías usadas
 
@@ -21,6 +19,13 @@ El proyecto se complejiza pero he podido seguir avanzando con perseverancia.
 
 ## Versiones
 
+3.7 - Feat: Agrega funcionalidad de likes server-side.
+3.6 - Feat: Agrega funcionalidad para borrar las tarjetas del usuario actual del servidor.
+3.5 - Feat: Agrega Editabilidad al Avatar y leve refactoring.
+3.4 - Feat: Agrega Overlay y Botón para editar el Avatar.
+3.3 - Feat: Agrega Popup para borrar cards.
+3.2 - Feat: Agrega contador de Likes y otras interacciones con el servidor.
+3.1 - Feat: Agrega Clase Api y algunos refactor.
 3.0 - Feat: Agregar funcionalidad de bundling con Webpack y asociados.
 2.5 - Refactor: Agregar Class Section, UserInfo, Popup, PopupWithImage, PopupWithForm y vincular algunas clases.
 2.4 - Refactor: Agregar Class Card, CardModal, FormValidator y PopupForm, reemplazar código anterior.

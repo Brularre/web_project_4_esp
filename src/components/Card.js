@@ -1,6 +1,6 @@
 export default class Card {
   constructor(
-    { name, link, likes = 0, _id, owner },
+    { name, link, likes, _id, owner },
     templateSelector,
     { handleCardClick, handleDeleteClick, addLike, removeLike },
     currentUserId
