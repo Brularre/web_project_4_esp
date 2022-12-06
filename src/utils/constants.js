@@ -2,8 +2,10 @@
 
 const addBtn = document.querySelector(".profile__add-btn");
 const editBtn = document.querySelector(".profile__edit-btn");
+const avatarBtn = document.querySelector(".profile__avatar-wrapper");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
+const profileAvatar = document.querySelector(".profile__avatar");
 const cardsContainerSelector = ".elements";
 const cardTemplate = document
   .querySelector("#template_cards")
@@ -15,12 +17,15 @@ const formList = Array.from(document.forms);
 const deleteCardSelector = "popup__delete-card";
 const imagePopupSelector = "popup__image";
 const addFormSelector = "popup__add-form";
-const editFormSelector = "popup__edit-form";
+const editFormSelector = "popup__edit-profile";
+const avatarFormSelector = "popup__edit-avatar";
 
 const placeName = document.querySelector("#place-name");
 const placeLink = document.querySelector("#place-link");
 const formName = document.querySelector("#profile-name");
 const formAbout = document.querySelector("#profile-about");
+
+/* CONFIG OBJECTS */
 
 const cardSelectors = {
   cardName: ".elements__name",
@@ -53,15 +58,13 @@ const apiConfig = {
 const userInfoConfig = {
   name: profileName,
   about: profileAbout,
+  avatar: profileAvatar,
 };
 
 export {
-  cardSelectors,
-  validationConfig,
-  apiConfig,
-  userInfoConfig,
   addBtn,
   editBtn,
+  avatarBtn,
   profileName,
   profileAbout,
   cardsContainerSelector,
@@ -71,66 +74,13 @@ export {
   imagePopupSelector,
   addFormSelector,
   editFormSelector,
+  avatarFormSelector,
   placeName,
   placeLink,
   formName,
   formAbout,
+  cardSelectors,
+  validationConfig,
+  apiConfig,
+  userInfoConfig,
 };
-
-// const timesSquareImage = new URL(
-//   "../images/elements-img-TimesSquare.jpg",
-//   import.meta.url
-// );
-// const rushmoreImage = new URL(
-//   "../images/elements-img-Rushmore.jpg",
-//   import.meta.url
-// );
-// const cloudGateImage = new URL(
-//   "../images/elements-img-CloudGate.jpg",
-//   import.meta.url
-// );
-// const goldenGateImage = new URL(
-//   "../images/elements-img-GoldenGate.jpg",
-//   import.meta.url
-// );
-// const empireStateImage = new URL(
-//   "../images/elements-img-EmpireState.jpg",
-//   import.meta.url
-// );
-// const yellowstoneImage = new URL(
-//   "../images/elements-img-Yellowstone.jpg",
-//   import.meta.url
-// );
-
-// const cards = [
-//   {
-//     cardName: "Times Square",
-//     src: timesSquareImage,
-//     alt: "Fotografía de Times Square en NYC",
-//   },
-//   {
-//     cardName: "Monte Rushmore",
-//     src: rushmoreImage,
-//     alt: "Fotografía del Monte Rushmore en Dakota del Sur",
-//   },
-//   {
-//     cardName: "Puerta de las Nubes",
-//     src: cloudGateImage,
-//     alt: "Fotografía de la Cloud Gate en Chicago",
-//   },
-//   {
-//     cardName: "Golden Gate",
-//     src: goldenGateImage,
-//     alt: "Fotografía del Puente Golden Gate en San Francisco",
-//   },
-//   {
-//     cardName: "Empire State",
-//     src: empireStateImage,
-//     alt: "Fotografía del edificio Empire State en NYC",
-//   },
-//   {
-//     cardName: "Yellowstone",
-//     src: yellowstoneImage,
-//     alt: "Fotografía del Parque Nacional Yellowstone",
-//   },
-// ];
