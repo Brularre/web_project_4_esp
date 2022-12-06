@@ -23,7 +23,7 @@
             <div class="profile__avatar-edit-icon"></div>
           </div>
           <img
-            src="<%=require('./images/profile_avatar.jpg')%>"
+            src=""
             alt="Imagen de perfil del usuario"
             class="profile__avatar"
           />
@@ -90,8 +90,8 @@
         </form>
       </div>
 
-      <div class="popup" id="popup__edit-form">
-        <form class="popup__form" name="popup__edit-form" novalidate>
+      <div class="popup" id="popup__edit-profile">
+        <form class="popup__form" name="popup__edit-profile" novalidate>
           <button type="button" class="popup__close-btn"></button>
           <h2 class="popup__form-title">Editar perfil</h2>
           <div class="popup__input-container">
@@ -137,7 +137,7 @@
               placeholder="Enlace a imagen"
               required
             />
-            <span class="popup__error-edit-avatar"></span>
+            <span class="popup__error-profile-avatar"></span>
           </div>
           <button type="submit" class="popup__submit-btn">Guardar</button>
         </form>
