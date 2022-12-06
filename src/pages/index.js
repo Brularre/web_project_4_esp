@@ -6,6 +6,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupCardDelete from "../components/PopupCardDelete.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
@@ -45,7 +46,7 @@ const cardSection = new Section(
 const imagePopup = new PopupWithImage(imagePopupSelector);
 
 // Popup - Delete Card Form
-const popupCardDelete = new PopupWithForm(deleteCardSelector, {
+const popupCardDelete = new PopupCardDelete(deleteCardSelector, {
   submitCallback: deleteFormSubmit,
 });
 
@@ -84,27 +85,30 @@ const createCard = (cardData) => {
       const popupCaption = newCard._cardName.textContent;
       imagePopup.openPopup(evt.target, popupCaption);
     },
-    handleDeleteClick: (evt) => popupCardDelete.openPopup(),
+    handleDeleteClick: () => {
+      popupCardDelete.openPopup(newCard._element, newCard._getCardId());
+    },
   });
   const cardElement = newCard.generateCard(cardSelectors);
   return cardElement;
 };
-
-api.renderInitialCards({
-  renderer: (res) => {
-    cardSection.renderItems(res);
-  },
-});
 
 api
   .getUser()
   .then((res) => {
     return res.ok ? res.json() : Promise.reject(res.status);
   })
-
-  .then(({ name, about, avatar }) => {
+  .then(({ name, about, avatar, _id }) => {
     userInfo.setUserInfo(name, about);
     userInfo.setUserAvatar(avatar);
+    userInfo.setUserId(_id);
+  })
+  .then(() => {
+    api.renderInitialCards({
+      renderer: (res) => {
+        cardSection.renderItems(res);
+      },
+    });
   })
   .catch((err) => {
     console.log(`Error ${err}. Inténtalo de nuevo más tarde`);
@@ -153,9 +157,10 @@ function addFormSubmit(evt) {
   api
     .postContent(name, link)
     .then((res) => {
-      return res.ok
-        ? cardSection.prependItem(createCard({ name, link }))
-        : Promise.reject(res.status);
+      return res.ok ? res.json() : Promise.reject(res.status);
+    })
+    .then(({ name, link, _id, owner }) => {
+      cardSection.prependItem(createCard({ name, link, _id, owner }));
     })
     .catch((err) => {
       console.log(err);
@@ -166,6 +171,7 @@ function addFormSubmit(evt) {
     });
 }
 
+// Edit Form Submit Handler
 function editFormSubmit(evt) {
   evt.preventDefault();
   const { ["profile-name"]: username, ["profile-about"]: about } =
@@ -186,6 +192,7 @@ function editFormSubmit(evt) {
     });
 }
 
+// Edit Avatar Submit Handler
 function avatarFormSubmit(evt) {
   evt.preventDefault();
   const { ["profile-avatar"]: avatar } = avatarForm.getInputValues();
@@ -204,21 +211,7 @@ function avatarFormSubmit(evt) {
       avatarForm.closePopup();
     });
 }
-
-function deleteFormSubmit(evt) {
-  evt.preventDefault();
-  api
-    .editAvatar(avatar)
-    .then((res) => {
-      return res.ok
-        ? userInfo.setUserAvatar(avatar)
-        : Promise.reject(res.status);
-    })
-    .catch((err) => {
-      console.log(`Error ${err}. Inténtalo de nuevo más tarde`);
-    })
-    .finally(() => {
-      formValidators[avatarFormSelector].resetValidation();
-      avatarForm.closePopup();
-    });
+// Delete Form Submit Handler
+function deleteFormSubmit(id) {
+  api.deleteContent(id);
 }

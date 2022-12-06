@@ -26,7 +26,9 @@
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__avatar-wrapper/profile__avatar-wrapper.css);
 @import url(../blocks/profile/__avatar-overlay/profile__avatar-overlay.css);
+@import url(../blocks/profile/__avatar-overlay/_hover/profile__avatar-overlay_hover.css);
 @import url(../blocks/profile/__avatar-edit-icon/profile__avatar-edit-icon.css);
+@import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__about/profile__about.css);
 @import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
@@ -64,6 +66,7 @@
 @import url(../blocks/elements/__name-box/elements__name-box.css);
 @import url(../blocks/elements/__del-btn/elements__del-btn.css);
 @import url(../blocks/elements/__del-btn/_hover/elements__del-btn_hover.css);
+@import url(../blocks/elements/__del-btn/_disabled/elements__del-btn_disabled.css);
 
 /* FOOTER */
 

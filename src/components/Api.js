@@ -56,4 +56,11 @@ export default class Api {
       headers: this._headers,
     });
   }
+
+  deleteContent(id) {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    });
+  }
 }

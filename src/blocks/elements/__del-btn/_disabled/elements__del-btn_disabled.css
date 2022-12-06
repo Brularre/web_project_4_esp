@@ -1,0 +1,4 @@
+.elements__del-btn_disabled {
+  visibility: hidden;
+  pointer-events: none;
+}

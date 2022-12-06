@@ -10,8 +10,3 @@
   transition: opacity 0.5s;
   z-index: 3;
 }
-
-.profile__avatar-edit-icon:hover {
-  opacity: 1;
-  cursor: pointer;
-}
