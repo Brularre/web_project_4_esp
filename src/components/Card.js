@@ -2,16 +2,21 @@ export default class Card {
   constructor(
     { name, link, likes = 0, _id, owner },
     templateSelector,
-    { handleCardClick, handleDeleteClick }
+    { handleCardClick, handleDeleteClick, addLike, removeLike },
+    currentUserId
   ) {
     this._name = name;
     this._src = link;
     this._template = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
-    this._likes = likes.length;
+    this._likes = likes;
+    this._likesNumber = likes.length;
     this._id = _id;
     this._owner = owner._id;
+    this._addLike = addLike;
+    this._removeLike = removeLike;
+    this._currentUserId = currentUserId;
   }
 
   _getTemplate() {
@@ -28,8 +33,9 @@ export default class Card {
     this._cardNumber = this._element.querySelector(cardNumber);
     this._setEventListeners();
     this._isOwner();
+    this._isLiked();
     this._cardName.textContent = this._name;
-    this._cardNumber.textContent = this._likes;
+    this._cardNumber.textContent = this._likesNumber;
     this._cardImage.src = this._src;
     this._cardImage.alt = `Fotografía subida de ${this._name}`;
     return this._element;
@@ -41,12 +47,30 @@ export default class Card {
     this._cardLike.addEventListener("click", this._like);
   }
 
-  _like(evt) {
-    evt.target.classList.toggle("elements__like-btn_active");
+  _like = (evt) => {
+    if (!evt.target.classList.contains("elements__like-btn_active")) {
+      evt.target.classList.add("elements__like-btn_active");
+      this._likesNumber++;
+      this._cardNumber.textContent = this._likesNumber;
+      this._addLike(this._id);
+    } else {
+      evt.target.classList.remove("elements__like-btn_active");
+      this._likesNumber--;
+      this._cardNumber.textContent = this._likesNumber;
+      this._removeLike(this._id);
+    }
+  };
+
+  _isLiked() {
+    if (this._likes.find((i) => i._id == this._currentUserId)) {
+      this._cardLike.classList.add("elements__like-btn_active");
+    } else {
+      this._cardLike.classList.remove("elements__like-btn_active");
+    }
   }
 
   _isOwner() {
-    this._owner === "137eb5687f7971918b987332"
+    this._owner == this._currentUserId
       ? this._cardDelete.classList.remove("elements__del-btn_disabled")
       : this._cardDelete.classList.add("elements__del-btn_disabled");
   }

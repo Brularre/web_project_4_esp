@@ -80,15 +80,26 @@ const formValidators = {};
 /* CARD INJECTOR */
 
 const createCard = (cardData) => {
-  const newCard = new Card(cardData, cardTemplate, {
-    handleCardClick: (evt) => {
-      const popupCaption = newCard._cardName.textContent;
-      imagePopup.openPopup(evt.target, popupCaption);
+  const newCard = new Card(
+    cardData,
+    cardTemplate,
+    {
+      handleCardClick: (evt) => {
+        const popupCaption = newCard._cardName.textContent;
+        imagePopup.openPopup(evt.target, popupCaption);
+      },
+      handleDeleteClick: () => {
+        popupCardDelete.openPopup(newCard._element, newCard._getCardId());
+      },
+      addLike: (id) => {
+        addLike(id);
+      },
+      removeLike: (id) => {
+        removeLike(id);
+      },
     },
-    handleDeleteClick: () => {
-      popupCardDelete.openPopup(newCard._element, newCard._getCardId());
-    },
-  });
+    userInfo.getUserId()
+  );
   const cardElement = newCard.generateCard(cardSelectors);
   return cardElement;
 };
@@ -214,4 +225,12 @@ function avatarFormSubmit(evt) {
 // Delete Form Submit Handler
 function deleteFormSubmit(id) {
   api.deleteContent(id);
+}
+
+function addLike(id) {
+  api.addLike(id);
+}
+
+function removeLike(id) {
+  api.removeLike(id);
 }
