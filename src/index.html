@@ -22,11 +22,8 @@
           <div class="profile__avatar-overlay">
             <div class="profile__avatar-edit-icon"></div>
           </div>
-          <img
-            src=" "
-            alt="Imagen de perfil del usuario"
-            class="profile__avatar"
-          />
+          <img src="<%=require('./images/profile_avatar_placeholder.jpg')%>""
+          alt="Imagen de perfil del usuario" class="profile__avatar" />
         </a>
         <div class="profile__info">
           <span
@@ -46,7 +43,11 @@
 
       <div class="popup" id="popup__image">
         <button type="button" class="popup__close-btn"></button>
-        <img src="#" alt="Imagen del popup" class="popup__image" />
+        <img
+          src="<%=require('./images/elements_image_placeholder.svg')%>"
+          alt="Imagen del popup"
+          class="popup__image"
+        />
         <h3 class="popup__image-caption">Título del popup</h3>
       </div>
 
@@ -149,7 +150,7 @@
       <div class="elements__card">
         <button type="button" class="elements__del-btn"></button>
         <img
-          src="#"
+          src="<%=require('./images/elements_image_placeholder.svg')%>"
           alt="Fotografía en Web 'Around the US'"
           class="elements__image"
         />

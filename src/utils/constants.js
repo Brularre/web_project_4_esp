@@ -48,7 +48,7 @@ const validationConfig = {
 };
 
 const apiConfig = {
-  baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02/",
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02",
   headers: {
     authorization: "3a5f7fd0-4f77-4f83-8848-cbfc8ddc2f6c",
     "Content-Type": "application/json; charset=UTF-8",

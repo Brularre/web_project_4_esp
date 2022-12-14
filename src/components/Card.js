@@ -38,6 +38,7 @@ export default class Card {
     this._cardNumber.textContent = this._likesNumber;
     this._cardImage.src = this._src;
     this._cardImage.alt = `Fotografía subida de ${this._name}`;
+    this._imageLoaded();
     return this._element;
   }
 
@@ -77,5 +78,13 @@ export default class Card {
 
   _getCardId() {
     return this._id;
+  }
+
+  _imageLoaded() {
+    this._cardImage.addEventListener("error", function (evt) {
+      evt.target.src =
+        "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=";
+      evt.onerror = null;
+    });
   }
 }

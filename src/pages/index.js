@@ -106,9 +106,6 @@ const createCard = (cardData) => {
 
 api
   .getUser()
-  .then((res) => {
-    return res.ok ? res.json() : Promise.reject(res.status);
-  })
   .then(({ name, about, avatar, _id }) => {
     userInfo.setUserInfo(name, about);
     userInfo.setUserAvatar(avatar);
@@ -116,13 +113,13 @@ api
   })
   .then(() => {
     api.renderInitialCards({
-      renderer: (res) => {
-        cardSection.renderItems(res);
+      renderer: (cards) => {
+        cardSection.renderItems(cards);
       },
     });
   })
   .catch((err) => {
-    console.log(`Error ${err}.`);
+    throw new Error(`Error ${err}.`);
   });
 
 /* EVENT LISTENERS */
@@ -168,14 +165,11 @@ function addFormSubmit(evt) {
     addForm.getInputValues();
   api
     .postContent(name, link)
-    .then((res) => {
-      return res.ok ? res.json() : Promise.reject(res.status);
-    })
-    .then(({ name, link, _id, owner }) => {
-      cardSection.prependItem(createCard({ name, link, _id, owner }));
+    .then(({ name, link, likes = 0, _id, owner }) => {
+      cardSection.prependItem(createCard({ name, link, likes, _id, owner }));
     })
     .catch((err) => {
-      console.log(`Error ${err}.`);
+      throw new Error(`Error ${err}.`);
     })
     .finally(() => {
       formValidators[addFormSelector].resetValidation();
@@ -198,7 +192,7 @@ function editFormSubmit(evt) {
         : Promise.reject(res.status);
     })
     .catch((err) => {
-      console.log(`Error ${err}.`);
+      throw new Error(`Error ${err}.`);
     })
     .finally(() => {
       formValidators[editFormSelector].resetValidation();
@@ -220,7 +214,7 @@ function avatarFormSubmit(evt) {
         : Promise.reject(res.status);
     })
     .catch((err) => {
-      console.log(`Error ${err}.`);
+      throw new Error(`Error ${err}.`);
     })
     .finally(() => {
       formValidators[avatarFormSelector].resetValidation();
@@ -233,10 +227,12 @@ function deleteFormSubmit(id) {
   api.deleteContent(id);
 }
 
+// Add Like to Server
 function addLike(id) {
   api.addLike(id);
 }
 
+// Remove Like from Server
 function removeLike(id) {
   api.removeLike(id);
 }

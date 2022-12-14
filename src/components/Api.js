@@ -4,25 +4,28 @@ export default class Api {
     this._headers = headers;
   }
 
-  renderInitialCards({ renderer }) {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    })
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(res.status);
-      })
-      .then((items) => {
-        renderer(items);
-      })
-      .catch((err) => {
-        console.log(`Error ${err}.`);
+  async renderInitialCards({ renderer }) {
+    try {
+      const res = await fetch(`${this._baseUrl}/cards`, {
+        headers: this._headers,
       });
+      const cards = res.ok ? await res.json() : Promise.reject(res.status);
+      renderer(cards);
+    } catch (err) {
+      throw new Error(`Error ${err}.`);
+    }
   }
 
   getUser() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    });
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(res.status);
+      })
+      .catch((err) => {
+        throw new Error(`Error ${err}.`);
+      });
   }
 
   editUser(name, about) {
@@ -33,6 +36,8 @@ export default class Api {
         about: about,
       }),
       headers: this._headers,
+    }).catch((err) => {
+      throw new Error(`Error ${err}.`);
     });
   }
 
@@ -40,6 +45,8 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: "PUT",
       headers: this._headers,
+    }).catch((err) => {
+      throw new Error(`Error ${err}.`);
     });
   }
 
@@ -47,6 +54,8 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: "DELETE",
       headers: this._headers,
+    }).catch((err) => {
+      throw new Error(`Error ${err}.`);
     });
   }
 
@@ -57,6 +66,8 @@ export default class Api {
         avatar: avatar,
       }),
       headers: this._headers,
+    }).catch((err) => {
+      throw new Error(`Error ${err}.`);
     });
   }
 
@@ -68,13 +79,21 @@ export default class Api {
         link: link,
       }),
       headers: this._headers,
-    });
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(res.status);
+      })
+      .catch((err) => {
+        throw new Error(`Error ${err}.`);
+      });
   }
 
   deleteContent(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
+    }).catch((err) => {
+      throw new Error(`Error ${err}.`);
     });
   }
 }
